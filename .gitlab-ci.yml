@@ -10,7 +10,7 @@ build:
   script:
     - debuild -uc -us
     - mkdir -p build
-    - cp *.deb build
+    - cp ../*.deb build
   artifacts:
     paths:
       - build
