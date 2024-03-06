@@ -1,4 +1,4 @@
-image: beagle/ubuntu-build-image
+image: beagle/ubuntu-build
 
 build:
   stage: build
