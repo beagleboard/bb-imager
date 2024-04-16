@@ -1,21 +1,21 @@
 <RCC>
     <qresource prefix="/i18n">
-        <file>rpi-imager_de.qm</file>
-        <file>rpi-imager_en.qm</file>
-        <file>rpi-imager_es.qm</file>
-        <file>rpi-imager_fr.qm</file>
-        <file>rpi-imager_it.qm</file>
-        <file>rpi-imager_ko.qm</file>
-        <file>rpi-imager_nl.qm</file>
-        <file>rpi-imager_pl.qm</file>
-        <file>rpi-imager_ru.qm</file>
-        <file>rpi-imager_sl.qm</file>
-        <file>rpi-imager_sk.qm</file>
-        <file>rpi-imager_tr.qm</file>
-        <file>rpi-imager_zh.qm</file>
-        <file>rpi-imager_ca.qm</file>
-        <file>rpi-imager_ja.qm</file>
-        <file>rpi-imager_uk.qm</file>
-        <file>rpi-imager_zh-TW.qm</file>
+        <file>bb-imager_de.qm</file>
+        <file>bb-imager_en.qm</file>
+        <file>bb-imager_es.qm</file>
+        <file>bb-imager_fr.qm</file>
+        <file>bb-imager_it.qm</file>
+        <file>bb-imager_ko.qm</file>
+        <file>bb-imager_nl.qm</file>
+        <file>bb-imager_pl.qm</file>
+        <file>bb-imager_ru.qm</file>
+        <file>bb-imager_sl.qm</file>
+        <file>bb-imager_sk.qm</file>
+        <file>bb-imager_tr.qm</file>
+        <file>bb-imager_zh.qm</file>
+        <file>bb-imager_ca.qm</file>
+        <file>bb-imager_ja.qm</file>
+        <file>bb-imager_uk.qm</file>
+        <file>bb-imager_zh-TW.qm</file>
     </qresource>
 </RCC>

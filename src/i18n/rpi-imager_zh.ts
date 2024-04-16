@@ -108,8 +108,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="670"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>受控文件夹访问似乎已启用。 请将rpi-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both bb-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>受控文件夹访问似乎已启用。 请将bb-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="677"/>
@@ -516,7 +516,7 @@
     <message>
         <location filename="../main.qml" line="119"/>
         <location filename="../main.qml" line="481"/>
-        <source>Raspberry Pi Device</source>
+        <source>Beagle Board</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -710,7 +710,7 @@
     <message>
         <location filename="../main.qml" line="1192"/>
         <source>There is a newer version of Imager available.&lt;br&gt;Would you like to visit the website to download it?</source>
-        <translation>有较新版本的rpi-imager。&lt;br&gt;需要下载更新吗？</translation>
+        <translation>有较新版本的bb-imager。&lt;br&gt;需要下载更新吗？</translation>
     </message>
     <message>
         <source>Error downloading OS list from Internet</source>

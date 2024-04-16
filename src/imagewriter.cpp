@@ -154,7 +154,7 @@ ImageWriter::ImageWriter(QObject *parent)
     }
     _settings.endGroup();
 
-    QDir dir(":/i18n", "rpi-imager_*.qm");
+    QDir dir(":/i18n", "bb-imager_*.qm");
     const QStringList transFiles = dir.entryList();
     QLocale currentLocale;
     QStringList localeComponents = currentLocale.name().split('_');
@@ -301,7 +301,7 @@ void ImageWriter::startWrite()
     connect(_thread, SIGNAL(finalizing()), SLOT(onFinalizing()));
     connect(_thread, SIGNAL(preparationStatusUpdate(QString)), SLOT(onPreparationStatusUpdate(QString)));
     _thread->setVerifyEnabled(_verifyEnabled);
-    _thread->setUserAgent(QString("Mozilla/5.0 rpi-imager/%1").arg(constantVersion()).toUtf8());
+    _thread->setUserAgent(QString("Mozilla/5.0 bb-imager/%1").arg(constantVersion()).toUtf8());
     _thread->setImageCustomization(_config, _cmdline, _firstrun, _cloudinit, _cloudinitNetwork, _initFormat);
 
     if (!_expectedHash.isEmpty() && _cachedFileHash != _expectedHash && _cachingEnabled)
@@ -1334,7 +1334,7 @@ void ImageWriter::changeLanguage(const QString &newLanguageName)
     qDebug() << "Changing language to" << langcode;
 
     QTranslator *trans = new QTranslator();
-    if (trans->load(":/i18n/rpi-imager_"+langcode+".qm"))
+    if (trans->load(":/i18n/bb-imager_"+langcode+".qm"))
     {
         replaceTranslator(trans);
         _currentLang = newLanguageName;

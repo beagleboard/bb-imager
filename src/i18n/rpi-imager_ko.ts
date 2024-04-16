@@ -108,8 +108,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="670"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>제어된 폴더 액세스가 설정된 것 같습니다. rpi-imager.exe 및 fat32format.exe를 허용된 앱 리스트에서 추가하고 다시 시도하십시오.</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both bb-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>제어된 폴더 액세스가 설정된 것 같습니다. bb-imager.exe 및 fat32format.exe를 허용된 앱 리스트에서 추가하고 다시 시도하십시오.</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="677"/>
@@ -528,7 +528,7 @@
     <message>
         <location filename="../main.qml" line="119"/>
         <location filename="../main.qml" line="481"/>
-        <source>Raspberry Pi Device</source>
+        <source>Beagle Board</source>
         <translation>라즈베리파이(Raspberry Pi) 디바이스</translation>
     </message>
     <message>

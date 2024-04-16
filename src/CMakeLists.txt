@@ -3,10 +3,10 @@
 
 cmake_minimum_required(VERSION 3.9.4)
 OPTION (ENABLE_CHECK_VERSION "Check for version updates" ON)
-OPTION (ENABLE_TELEMETRY "Enable sending telemetry" ON)
+OPTION (ENABLE_TELEMETRY "Enable sending telemetry" OFF)
 OPTION (DRIVELIST_FILTER_SYSTEM_DRIVES "Filter System drives from displayed drives" ON)
 
-project(rpi-imager LANGUAGES CXX C)
+project(bb-imager LANGUAGES CXX C)
 set(IMAGER_VERSION_MAJOR 1)
 set(IMAGER_VERSION_MINOR 8)
 set(IMAGER_VERSION_STR "${IMAGER_VERSION_MAJOR}.${IMAGER_VERSION_MINOR}.5")
@@ -24,10 +24,10 @@ set(HEADERS config.h imagewriter.h networkaccessmanagerfactory.h nan.h drivelist
 
 # Add dependencies
 if (APPLE)
-    set_source_files_properties("icons/rpi-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+    set_source_files_properties("icons/bb-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     set(DEPENDENCIES acceleratedcryptographichash.cpp mac/macfile.cpp mac/macfile.h dependencies/mountutils/src/darwin/functions.cpp
         mac/macwlancredentials.h mac/macwlancredentials.cpp
-        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/rpi-imager.icns)
+        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/bb-imager.icns)
     enable_language(OBJC C)
 elseif (UNIX)
     set(DEPENDENCIES dependencies/mountutils/src/linux/functions.cpp linux/linuxdrivelist.cpp linux/networkmanagerapi.h linux/networkmanagerapi.cpp linux/stpanalyzer.h linux/stpanalyzer.cpp)
@@ -51,7 +51,7 @@ elseif (UNIX)
 elseif (WIN32)
     set(DEPENDENCIES acceleratedcryptographichash.cpp dependencies/mountutils/src/windows/functions.cpp dependencies/drivelist/src/windows/list.cpp
         windows/winfile.cpp windows/winfile.h windows/winwlancredentials.h windows/winwlancredentials.cpp
-        windows/rpi-imager.rc wlanapi_delayed.lib)
+        windows/bb-imager.rc wlanapi_delayed.lib)
     set(EXTRALIBS setupapi ${CMAKE_CURRENT_BINARY_DIR}/wlanapi_delayed.lib)
     add_custom_command(
         OUTPUT wlanapi_delayed.lib
@@ -129,19 +129,19 @@ if(${QT}WinExtras_FOUND)
     set(EXTRALIBS ${EXTRALIBS} ${QT}::WinExtras)
 endif()
 
-set(TRANSLATIONS i18n/rpi-imager_en.ts i18n/rpi-imager_nl.ts i18n/rpi-imager_zh.ts i18n/rpi-imager_tr.ts
-    i18n/rpi-imager_fr.ts i18n/rpi-imager_de.ts i18n/rpi-imager_sk.ts i18n/rpi-imager_it.ts
-    i18n/rpi-imager_ca.ts i18n/rpi-imager_sl.ts i18n/rpi-imager_ko.ts i18n/rpi-imager_ja.ts
-    i18n/rpi-imager_ru.ts i18n/rpi-imager_es.ts i18n/rpi-imager_uk.ts i18n/rpi-imager_zh-TW.ts
-    i18n/rpi-imager_pl.ts)
+#set(TRANSLATIONS i18n/bb-imager_en.ts i18n/bb-imager_nl.ts i18n/bb-imager_zh.ts i18n/bb-imager_tr.ts
+#    i18n/bb-imager_fr.ts i18n/bb-imager_de.ts i18n/bb-imager_sk.ts i18n/bb-imager_it.ts
+#    i18n/bb-imager_ca.ts i18n/bb-imager_sl.ts i18n/bb-imager_ko.ts i18n/bb-imager_ja.ts
+#    i18n/bb-imager_ru.ts i18n/bb-imager_es.ts i18n/bb-imager_uk.ts i18n/bb-imager_zh-TW.ts
+#    i18n/bb-imager_pl.ts)
 #qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TRANSLATIONS})
-if (Qt5_FOUND)
-    qt5_add_translation(QM_FILES ${TRANSLATIONS})
-else()
-    qt_add_translation(QM_FILES  ${TRANSLATIONS})
-endif()
-configure_file(i18n/translations.qrc "${CMAKE_CURRENT_BINARY_DIR}" COPYONLY)
-set(SOURCES ${SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES})
+#if (Qt5_FOUND)
+    #qt5_add_translation(QM_FILES ${TRANSLATIONS})
+#else()
+    #qt_add_translation(QM_FILES  ${TRANSLATIONS})
+#endif()
+#configure_file(i18n/translations.qrc "${CMAKE_CURRENT_BINARY_DIR}" COPYONLY)
+#set(SOURCES ${SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES})
 
 if (WIN32)
     # Adding WIN32 prevents a console window being opened on Windows
@@ -254,7 +254,7 @@ if (WIN32)
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
             "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe" "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe"
-            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/rpi-imager-cli.cmd"
+            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/bb-imager-cli.cmd"
             "${CMAKE_BINARY_DIR}/deploy")
 
     add_custom_command(TARGET ${PROJECT_NAME}
@@ -264,13 +264,13 @@ if (WIN32)
             "${CMAKE_BINARY_DIR}/deploy")
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/windows/rpi-imager.nsi.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.nsi"
+        "${CMAKE_CURRENT_SOURCE_DIR}/windows/bb-imager.nsi.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.nsi"
         @ONLY)
 
     add_custom_command(TARGET ${PROJECT_NAME}
         POST_BUILD
-        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/rpi-imager.exe")
+        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/bb-imager.exe")
 
     # Remove excess files
     add_custom_command(TARGET ${PROJECT_NAME}
@@ -344,14 +344,14 @@ else()
     endif()
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/linux/rpi-imager.metainfo.xml.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml"
+        "${CMAKE_CURRENT_SOURCE_DIR}/linux/bb-imager.metainfo.xml.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.metainfo.xml"
         @ONLY)
 
-    install(TARGETS rpi-imager DESTINATION bin)
-    install(FILES icons/rpi-imager.png DESTINATION share/icons/hicolor/128x128/apps)
-    install(FILES linux/org.raspberrypi.rpi-imager.desktop DESTINATION share/applications)
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml" DESTINATION share/metainfo)
+    install(TARGETS bb-imager DESTINATION bin)
+    install(FILES icons/bb-imager.png DESTINATION share/icons/hicolor/128x128/apps)
+    install(FILES linux/org.raspberrypi.bb-imager.desktop DESTINATION share/applications)
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.metainfo.xml" DESTINATION share/metainfo)
 endif()
 
 include_directories(${CURL_INCLUDE_DIR} ${LibArchive_INCLUDE_DIR} ${OPENSSL_INCLUDE_DIR} ${LIBLZMA_INCLUDE_DIR} ${LIBDRM_INCLUDE_DIRS})

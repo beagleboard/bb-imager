@@ -108,8 +108,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="670"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>Похоже, что включён контролируемый доступ к папкам (Controlled Folder Access). Добавьте rpi-imager.exe и fat32format.exe в список разрешённых программ и попробуйте снова.</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both bb-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>Похоже, что включён контролируемый доступ к папкам (Controlled Folder Access). Добавьте bb-imager.exe и fat32format.exe в список разрешённых программ и попробуйте снова.</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="677"/>
@@ -516,7 +516,7 @@
     <message>
         <location filename="../main.qml" line="119"/>
         <location filename="../main.qml" line="481"/>
-        <source>Raspberry Pi Device</source>
+        <source>Beagle Board</source>
         <translation>Устройство Raspberry Pi</translation>
     </message>
     <message>

@@ -1,6 +1,8 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2020 Raspberry Pi Ltd
+ * Modified 2024 BeagleBoard.org Foundation
+ * Author - Andrei Aldea
  */
 
 #include <QFileInfo>
@@ -172,10 +174,10 @@ int main(int argc, char *argv[])
 #else
     QApplication app(argc, argv);
 #endif
-    app.setOrganizationName("Raspberry Pi");
-    app.setOrganizationDomain("raspberrypi.org");
+    app.setOrganizationName("BeagleBoard");
+    app.setOrganizationDomain("beagleboard.org");
     app.setApplicationName("Imager");
-    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
+    app.setWindowIcon(QIcon(":/icons/bgl-imager.ico"));
     ImageWriter imageWriter;
     NetworkAccessManagerFactory namf;
     QQmlApplicationEngine engine;
@@ -312,7 +314,7 @@ int main(int argc, char *argv[])
         QLocale::setDefault(QLocale(langcode));
 #endif
 
-        if (translator->load(QLocale(), "rpi-imager", "_", QLatin1String(":/i18n")))
+        if (translator->load(QLocale(), "bb-imager", "_", QLatin1String(":/i18n")))
             imageWriter.replaceTranslator(translator);
         else
             delete translator;
