@@ -1,13 +1,13 @@
-# rpi-imager
+# bb-imager
 
-Raspberry Pi Imaging Utility
+BeagleBoard Imaging Utility
 
-- Download the latest version for Windows, macOS and Ubuntu from the [Raspberry Pi downloads page](https://www.raspberrypi.com/software/).
-- To install on Raspberry Pi OS, use `sudo apt update && sudo apt install rpi-imager`.
+- Download the latest version for Windows, macOS and Ubuntu from the [BeagleBoard.org distros page](https://www.beagleboard.org/distros/).
+- To install on BeagleBoard.org Debian, use `sudo apt update && sudo apt install bb-imager`.
 
-# How to use Raspberry Pi Imager
+# How to use Beagle Imager
 
-Please see our [official documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html#raspberry-pi-imager).
+Please see our [official documentation](https://docs.beagleboard.org/latest/intro/support/getting-started.html#bb-imager).
 
 ## License
 
@@ -32,12 +32,12 @@ sudo apt install --no-install-recommends build-essential devscripts debhelper cm
 #### Get the source
 
 ```
-git clone --depth 1 https://github.com/raspberrypi/rpi-imager
+git clone --depth 1 https://openbeagle.org/beagleboard/bb-imager
 ```
 
-#### Building on the Pi
+#### Building on a Beagle
 
-If building on a device with limited memory (e.g. 1 GB Pi), disable parallel build or it may run out of memory:
+If building on a device with limited memory (e.g. 512 MB BeagleBone Black), disable parallel build or it may run out of memory:
 
 ```
 export DEB_BUILD_OPTIONS="parallel=1"
@@ -46,7 +46,7 @@ export DEB_BUILD_OPTIONS="parallel=1"
 #### Build the Debian package
 
 ```
-cd rpi-imager
+cd bb-imager
 debuild -uc -us
 ```
 
@@ -55,7 +55,7 @@ Can install it with apt:
 
 ```
 cd ..
-sudo apt install ./rpi-imager*.deb
+sudo apt install ./bb-imager*.deb
 ```
 
 It should create an icon in the start menu under "Utilities" or "Accessories".
@@ -75,13 +75,13 @@ sudo yum install git gcc gcc-c++ make cmake libarchive-devel libcurl-devel lzma-
 #### Get the source
 
 ```
-git clone --depth 1 https://github.com/raspberrypi/rpi-imager
+git clone --depth 1 https://openbeagle.org/beagleboard/bb-imager
 ```
 
 #### Build and install the software
 
 ```
-cd rpi-imager
+cd bb-imager
 mkdir -p build
 cd build
 cmake ../src
@@ -107,14 +107,14 @@ If NOT and are you only compiling for your own personal use, comment out all lin
 
 Building can be done manually using the command-line, using "cmake", "make", etc., but if you are not that familar with setting up a proper Windows build environment (setting paths, etc.), it is easiest to use the Qt creator GUI instead.
 
-- Download source .zip from github and extract it to a folder on disk
+- Download source .zip from OpenBeagle and extract it to a folder on disk
 - Open src/CMakeLists.txt in Qt creator.
 - For builds you distribute to others, make sure you choose "Release" in the toolchain settings and not the debug flavour.
 - Menu "Build" -> "Build all"
-- Result will be in build_rpi-imager_someversion
+- Result will be in build_bb-imager_someversion
 - Go to the BUILD folder, right click on the .nsi script "Compile NSIS script", to create installer.
 
-Note: the CMake integration in Qt Creator is a bit flaky at times. If you made any custom changes to the CMakeLists.txt file and it subsequently gets in an endless loop where it never finishes the "configures" stage while re-processing the file, delete "build_rpi-imager_someversion" directory and try again.
+Note: the CMake integration in Qt Creator is a bit flaky at times. If you made any custom changes to the CMakeLists.txt file and it subsequently gets in an endless loop where it never finishes the "configures" stage while re-processing the file, delete "build_bb-imager_someversion" directory and try again.
 
 ### macOS
 
@@ -130,18 +130,18 @@ During installation, choose a Qt 5.x edition and CMake.
 - Download source .zip from github and extract it to a folder on disk
 - Start Qt Creator (may need to start "finder" navigate to home folder using the "Go" menu, and find Qt folder to start it manually as it may not have created icon in Applications), and open src/CMakeLists.txt
 - Menu "Build" -> "Build all"
-- Result will be in build_rpi-imager_someversion
+- Result will be in build_bb-imager_someversion
 - For distribution to others: code sign the .app, create a DMG, code sign the DMG, submit it for notarization to Apple and staple the notarization ticket to the DMG.
 
 E.g.:
 
 ```
-cd build-rpi-imager-Desktop_Qt_5_14_1_clang_64bit-Release/
-codesign --deep --force --verify --verbose --sign "YOUR KEYID" --options runtime rpi-imager.app
-mv rpi-imager.app "Raspberry Pi Imager.app"
-create-dmg Raspberry\ Pi\ Imager.app
-mv Raspberry\ Pi\ Imager\ .dmg imager.dmg
-xcrun altool --notarize-app -t osx -f imager.dmg --primary-bundle-id="org.raspberrypi.imagingutility" -u YOUR-EMAIL-ADDRESS -p YOUR-APP-SPECIFIC-APPLE-PASSWORD -itc_provider TEAM-ID-IF-APPLICABLE
+cd build-bb-imager-Desktop_Qt_5_14_1_clang_64bit-Release/
+codesign --deep --force --verify --verbose --sign "YOUR KEYID" --options runtime bb-imager.app
+mv bb-imager.app "BeagleBoard Imager.app"
+create-dmg BeagleBoard\ Imager.app
+mv BeagleBoard\ Imager\ .dmg imager.dmg
+xcrun altool --notarize-app -t osx -f imager.dmg --primary-bundle-id="org.beagleboard.imagingutility" -u YOUR-EMAIL-ADDRESS -p YOUR-APP-SPECIFIC-APPLE-PASSWORD -itc_provider TEAM-ID-IF-APPLICABLE
 xcrun stapler staple imager.dmg
 ```
 
@@ -154,13 +154,15 @@ To build:
 - Run:
 
 ```
-cd rpi-imager/embedded
+cd bb-imager/embedded
 ./build.sh
 ```
 
 The result will be in the "output" directory.
 The files can be copied to a FAT32 formatted SD card, and inserted in a Pi for testing.
 If you would like to build a (signed) netboot image there are tools for that at: https://github.com/raspberrypi/usbboot/tree/master/tools
+
+**TODO**: point to snagboot!
 
 ## Other notes
 
@@ -176,30 +178,7 @@ So can simply create another 'start menu shortcut' to the application with that 
 
 ### Telemetry
 
-In order to understand usage of the application (e.g. uptake of Raspberry Pi Imager versions and which images and operating systems are most popular) when using the default image repository, the URL, operating system name and category (if present) of a selected image are sent along with the running version of Raspberry Pi Imager, your operating system, CPU architecture, locale and Raspberry Pi revision (if applicable) to https://rpi-imager-stats.raspberrypi.com by downloadstatstelemetry.cpp.
-
-This web service is hosted by [Heroku](https://www.heroku.com) and only stores an incrementing counter using a [Redis Sorted Set](https://redis.io/topics/data-types#sorted-sets) for each URL, operating system name and category per day in the `eu-west-1` region and does not associate any personal data with those counts. This allows us to query the number of downloads over time and nothing else.
-
-The last 1,500 requests to the service are logged for one week before expiring as this is the [minimum log retention period for Heroku](https://devcenter.heroku.com/articles/logging#log-history-limits).
-
-On Windows, you can opt out of telemetry by disabling it in the Registry:
-
-```
-reg add "HKCU\Software\Raspberry Pi\Imager" /v telemetry /t REG_DWORD /d 0
-```
-
-On Linux, run `rpi-imager --disable-telemetry` or add the following to `~/.config/Raspberry Pi/Imager.conf`:
-
-```ini
-[General]
-telemetry=false
-```
-
-On macOS, disable it by editing the property list for the application:
-
-```
-defaults write org.raspberrypi.Imager.plist telemetry -bool NO
-```
+BeagleBoard.org has disabled user tracking in this version of the application. We appreciate that it could provide some value to users for us to know the most popular images, but perfer to save the effort and respect your privacy.
 
 ### OS Customization
 
