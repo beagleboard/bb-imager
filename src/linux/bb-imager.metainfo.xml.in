@@ -30,23 +30,23 @@
   <launchable type="desktop-id">org.beagleboard.bb-imager.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-MAIN.png</image>
+      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-MAIN-1.png</image>
       <caption>Main window</caption>
     </screenshot>
     <screenshot>
-      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-OS.png</image>
+      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-OS-1.png</image>
       <caption>Choose OS</caption>
     </screenshot>
     <screenshot>
-      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-SD.png</image>
+      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-SD-1.png</image>
       <caption>Choose SD</caption>
     </screenshot>
     <screenshot>
-      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-WRITE.png</image>
+      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-WRITE-1.png</image>
       <caption>Write in progress</caption>
     </screenshot>
     <screenshot>
-      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-DONE.png</image>
+      <image>https://www.beagleboard.org/app/uploads/2024/04/IMAGING-UTILITY-DONE-1.png</image>
       <caption>Write done</caption>
     </screenshot>
   </screenshots>
