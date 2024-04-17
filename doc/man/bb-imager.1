@@ -1,11 +1,11 @@
-.TH RPI\-IMAGER 1
+.TH BB\-IMAGER 1
 .
 .SH NAME
-rpi\-imager \- Flash disk images to removable storage
+bb\-imager \- Flash disk images to removable storage
 .
 .
 .SH SYNOPSIS
-.SY rpi\-imager
+.SY bb\-imager
 .OP \-\-debug
 .OP \-\-repo url
 .OP \-\-qm translations
@@ -13,7 +13,7 @@ rpi\-imager \- Flash disk images to removable storage
 .OP image-uri
 .YS
 .
-.SY rpi\-imager
+.SY bb\-imager
 \-\-cli
 .OP \-\-debug
 .OP \-\-quiet
@@ -23,17 +23,17 @@ image-uri
 destination-device
 .YS
 .
-.SY rpi\-imager
+.SY bb\-imager
 \-\-version
 .YS
 .
-.SY rpi\-imager
+.SY bb\-imager
 \-\-help
 .YS
 .
 .
 .SH DESCRIPTION
-.B rpi\-imager
+.B bb\-imager
 is a utility for writing a disk image file, which may optionally be compressed,
 to a removable destination disk, such as a micro-SD card or a USB-attached SSD
 drive.
@@ -41,7 +41,7 @@ drive.
 .PP
 When run without further command line arguments, the utility presents a simple
 graphical interface with controls for image-file selection, target drive
-selection, and one to start writing. In this mode, the Raspberry Pi server
+selection, and one to start writing. In this mode, the BeagleBoard server
 (and potentially third party servers) will be queried for available OS images.
 You may also specify an
 .I image-uri
@@ -75,11 +75,6 @@ must both be specified.
 Output extra debugging information on the console.
 .
 .TP
-.B \-\-disable\-telemetry
-Do not report OS writes to
-.I http://rpi-imager-stats.raspberrypi.com/
-.
-.TP
 .B \-\-disable\-verify
 After writing the image, do not attempt to verify that the image was written
 correctly.
@@ -102,7 +97,7 @@ Specify an alternate Qt message translations file to use with the GUI.
 .
 .TP
 .BI \-\-repo \ url
-Instead of querying the Raspberry Pi servers for the list of available OS
+Instead of querying the BeagleBoard servers for the list of available OS
 images, query this URL instead. The URL will be expected to return a JSON file
 conforming to the format described in the associated
 .IR json-schema .
@@ -137,15 +132,15 @@ Only valid when run with
 .
 .SH EXAMPLES
 .TP
-.B rpi\-imager
+.B bb\-imager
 Launch the graphical interface.
 .
 .TP
-.B rpi\-imager \-\-repo http://localhost:8080/os_list_utility.json
+.B bb\-imager \-\-repo http://localhost:8080/os_list_utility.json
 Test a locally hosted version of the OS list with the graphical interface.
 .
 .TP
-.B rpi\-imager \-\-cli \-\-disable\-verify test.img /dev/mmcblk0
+.B bb\-imager \-\-cli \-\-disable\-verify test.img /dev/mmcblk0
 Write
 .I test.img
 to

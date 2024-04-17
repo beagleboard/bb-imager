@@ -11,8 +11,8 @@ PRODUCTVERSION IMAGER_VERSION_CSV
     {
         BLOCK "040904b0"
         {
-            VALUE "CompanyName",     "Raspberry Pi Ltd"
-            VALUE "FileDescription", "Raspberry Pi Imager"
+            VALUE "CompanyName",     "BeagleBoard.org Foundation"
+            VALUE "FileDescription", "BeagleBoard Imager"
         }
     }
     BLOCK "VarFileInfo"

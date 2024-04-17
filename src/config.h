@@ -4,17 +4,18 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2020 Raspberry Pi Ltd
+ * Copyright (C) 2024 BeagleBoard.org Foundation
  */
 
 
 /* Repository URL */
-#define OSLIST_URL                        "https://github.com/Grippy98/bb-imager/raw/qml/os_list.json"
+#define OSLIST_URL                        "https://www.beagleboard.org/distros.json"
 
 /* Time synchronization URL (only used on eglfs QPA platform, URL must be HTTP) */
 #define TIME_URL                          "http://downloads.raspberrypi.org/os_list_imagingutility_v4.json?time_synchronization"
 
 /* Phone home the name of images downloaded for image popularity ranking */
-#define TELEMETRY_URL                     "https://bb-imager-stats.raspberrypi.com/downloads"
+#define TELEMETRY_URL                     "https://bb-imager-stats.beagleboard.org/downloads"
 
 /* Hash algorithm for verifying (uncompressed image) checksum */
 #define OSLIST_HASH_ALGORITHM             QCryptographicHash::Sha256

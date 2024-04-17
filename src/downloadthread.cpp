@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2020 Raspberry Pi Ltd
+ * Copyright (C) 2024 BeagleBoard.org Foundation
  */
 
 #include "downloadthread.h"
@@ -214,7 +215,7 @@ bool DownloadThread::_openAndPrepareDevice()
         return false;
     } else if (authopenresult == _file.authOpenError) {
         QString msg = tr("Error running authopen to gain access to disk device '%1'").arg(QString(_filename));
-        msg += "<br>"+tr("Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').");
+        msg += "<br>"+tr("Please verify if 'BeagleBoard Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').");
         QStringList args("x-apple.systempreferences:com.apple.preference.security?Privacy_RemovableVolume");
         QProcess::execute("open", args);
         emit error(msg);

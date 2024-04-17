@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Imager
-Comment=Raspberry Pi Imager
+Comment=BeagleBoard Imager
 Icon=bb-imager
 Exec=bb-imager %F
 Categories=Utility

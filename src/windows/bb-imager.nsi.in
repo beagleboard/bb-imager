@@ -4,12 +4,12 @@
 #              by Vlasis K. Barkas aka Red Wine red_wine@freemail.gr Sep 2006               
 ############################################################################################
 
-!define APP_NAME "Raspberry Pi Imager"
-!define COMP_NAME "Raspberry Pi Ltd"
+!define APP_NAME "BeagleBoard Imager"
+!define COMP_NAME "BeagleBoard.org Foundation"
 !define VERSION "@IMAGER_VERSION_STR@"
 !define INSTALLER_NAME "imager-${VERSION}.exe"
-!define COPYRIGHT "Raspberry Pi Ltd"
-!define DESCRIPTION "Raspberry Pi Imager"
+!define COPYRIGHT "BeagleBoard.org Foundation and Raspberry Pi Ltd"
+!define DESCRIPTION "BeagleBoard Imager"
 !define MAIN_APP_EXE "bb-imager.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
@@ -38,7 +38,7 @@ OutFile "${INSTALLER_NAME}"
 BrandingText "${APP_NAME}"
 XPStyle on
 InstallDirRegKey "${REG_ROOT}" "${REG_APP_PATH}" ""
-InstallDir "$PROGRAMFILES\Raspberry Pi Imager"
+InstallDir "$PROGRAMFILES\BeagleBoard Imager"
 
 ######################################################################
 
@@ -89,7 +89,7 @@ InstallDir "$PROGRAMFILES\Raspberry Pi Imager"
 
 !ifdef REG_START_MENU
 !define MUI_STARTMENUPAGE_NODISABLE
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "Raspberry Pi"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "BeagleBoard"
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "${REG_ROOT}"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "${UNINSTALL_PATH}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "${REG_START_MENU}"
@@ -115,14 +115,14 @@ InstallDir "$PROGRAMFILES\Raspberry Pi Imager"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "Italian"
 
-LangString termMsg ${LANG_ENGLISH} "Raspberry Pi Imager seems to be running and busy.$\nDo you want to terminate process?"
-LangString stopMsg ${LANG_ENGLISH} "Stopping Raspberry Pi Imager"
+LangString termMsg ${LANG_ENGLISH} "BeagleBoard Imager seems to be running and busy.$\nDo you want to terminate process?"
+LangString stopMsg ${LANG_ENGLISH} "Stopping BeagleBoard Imager"
 LangString win7Msg ${LANG_ENGLISH} "Windows 7 or above required"
-LangString termMsg ${LANG_DUTCH} "Raspberry Pi Imager is momenteel actief.$\nWilt u het programma afsluiten?"
-LangString stopMsg ${LANG_DUTCH} "Bezig met afsluiten Raspberry Pi Imager"
+LangString termMsg ${LANG_DUTCH} "BeagleBoard Imager is momenteel actief.$\nWilt u het programma afsluiten?"
+LangString stopMsg ${LANG_DUTCH} "Bezig met afsluiten BeagleBoard Imager"
 LangString win7Msg ${LANG_DUTCH} "Minimaal Windows 7 is vereist"
-LangString termMsg ${LANG_ITALIAN} "Raspberry Pi Imager sembra essere in esecuzione e occupato.$\nVuoi terminare il processo Raspberry Pi Imager?"
-LangString stopMsg ${LANG_ITALIAN} "Chiusura processo Raspberry Pi Imager"
+LangString termMsg ${LANG_ITALIAN} "BeagleBoard Imager sembra essere in esecuzione e occupato.$\nVuoi terminare il processo BeagleBoard Imager?"
+LangString stopMsg ${LANG_ITALIAN} "Chiusura processo BeagleBoard Imager"
 LangString win7Msg ${LANG_ITALIAN} "Per l'esecuzione del programma è richiesto Windows 7 o versioni successive"
 
 ######################################################################
@@ -642,11 +642,11 @@ CreateShortCut "$SMPROGRAMS\$SM_Folder\${APP_NAME} Website.lnk" "$INSTDIR\${APP_
 !endif
 
 !ifndef REG_START_MENU
-CreateDirectory "$SMPROGRAMS\Raspberry Pi"
-CreateShortCut "$SMPROGRAMS\Raspberry Pi\${APP_NAME}.lnk" "$INSTDIR\${MAIN_APP_EXE}"
+CreateDirectory "$SMPROGRAMS\BeagleBoard"
+CreateShortCut "$SMPROGRAMS\BeagleBoard\${APP_NAME}.lnk" "$INSTDIR\${MAIN_APP_EXE}"
 !ifdef WEB_SITE
 WriteIniStr "$INSTDIR\${APP_NAME} website.url" "InternetShortcut" "URL" "${WEB_SITE}"
-CreateShortCut "$SMPROGRAMS\Raspberry Pi\${APP_NAME} Website.lnk" "$INSTDIR\${APP_NAME} website.url"
+CreateShortCut "$SMPROGRAMS\BeagleBoard\${APP_NAME} Website.lnk" "$INSTDIR\${APP_NAME} website.url"
 !endif
 !endif
 
@@ -662,13 +662,13 @@ WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "URLInfoAbout" "${WEB_SITE}"
 !endif
 
 
-WriteRegStr SHCTX "Software\Classes\.zip\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.gz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.xz\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.img\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\.zstd\OpenWithProgIds" "RPI_IMAGINGUTILITY" ""
-WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open" "FriendlyAppName" "Raspberry Pi Imager"
-WriteRegStr SHCTX "Software\Classes\RPI_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\bb-imager.exe" "%1"'
+WriteRegStr SHCTX "Software\Classes\.zip\OpenWithProgIds" "BBI_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.gz\OpenWithProgIds" "BBI_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.xz\OpenWithProgIds" "BBI_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.img\OpenWithProgIds" "BBI_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\.zstd\OpenWithProgIds" "BBI_IMAGINGUTILITY" ""
+WriteRegStr SHCTX "Software\Classes\BBI_IMAGINGUTILITY\shell\open" "FriendlyAppName" "BeagleBoard Imager"
+WriteRegStr SHCTX "Software\Classes\BBI_IMAGINGUTILITY\shell\open\command" "" '"$INSTDIR\bb-imager.exe" "%1"'
 
 SectionEnd
 
@@ -1099,30 +1099,30 @@ RmDir "$SMPROGRAMS\$SM_Folder"
 !endif
 
 !ifndef REG_START_MENU
-Delete "$SMPROGRAMS\Raspberry Pi\${APP_NAME}.lnk"
+Delete "$SMPROGRAMS\BeagleBoard\${APP_NAME}.lnk"
 !ifdef WEB_SITE
-Delete "$SMPROGRAMS\Raspberry Pi\${APP_NAME} Website.lnk"
+Delete "$SMPROGRAMS\BeagleBoard\${APP_NAME} Website.lnk"
 !endif
-RmDir "$SMPROGRAMS\Raspberry Pi"
+RmDir "$SMPROGRAMS\BeagleBoard"
 !endif
 
 DeleteRegKey ${REG_ROOT} "${REG_APP_PATH}"
 DeleteRegKey ${REG_ROOT} "${UNINSTALL_PATH}"
 
 # File associations
-DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.gz\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.xz\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.img\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegValue SHCTX "Software\Classes\.zstd\OpenWithProgIds" "RPI_IMAGINGUTILITY"
-DeleteRegKey SHCTX "Software\Classes\RPI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.zip\OpenWithProgIds" "BBI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.gz\OpenWithProgIds" "BBI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.xz\OpenWithProgIds" "BBI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.img\OpenWithProgIds" "BBI_IMAGINGUTILITY"
+DeleteRegValue SHCTX "Software\Classes\.zstd\OpenWithProgIds" "BBI_IMAGINGUTILITY"
+DeleteRegKey SHCTX "Software\Classes\BBI_IMAGINGUTILITY"
 
 DeleteRegKey ${REG_ROOT} ""
 
-RMDir /r "$APPDATA\Raspberry Pi\Imager"
-RMDir "$APPDATA\Raspberry Pi"
-RMDir /r "$LOCALAPPDATA\Raspberry Pi\Imager"
-RMDir "$LOCALAPPDATA\Raspberry Pi"
+RMDir /r "$APPDATA\BeagleBoard\Imager"
+RMDir "$APPDATA\BeagleBoard"
+RMDir /r "$LOCALAPPDATA\BeagleBoard\Imager"
+RMDir "$LOCALAPPDATA\BeagleBoard"
 
 SectionEnd
 

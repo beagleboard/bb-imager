@@ -11,46 +11,42 @@
         "matching_type": "inclusive"
       },
       {
-        "name": "BeaglePlay",
-        "tags": [
-          "play-64bit",
-          "play-32bit"
-        ],
-        "icon": "https://github.com/Grippy98/bb-imager/blob/qml/src/icons/play.png?raw=true",
-        "description": "BeaglePlay based on AM62x",
-        "matching_type": "exclusive"
-      },
-      {
         "name": "BeagleY-AI",
         "tags": [
-          "byai-64bit",
-          "byai-32bit"
+          "byai-64bit"
         ],
         "default": false,
-        "icon": "https://github.com/Grippy98/bb-imager/blob/qml/src/icons/beagley.png?raw=true",
-        "description": "BeagleY-AI based on AM67A",
+        "icon": "https://www.beagleboard.org/app/uploads/2024/03/BeagleY-AI-angled-front-1-400x267.webp",
+        "description": "BeagleY-AI based on TI AM67A",
         "matching_type": "inclusive"
       },
       {
-        "name": "BeagleBone AI64",
+        "name": "BeaglePlay",
         "tags": [
-          "ai64-64bit",
-          "ai64-32bit"
+          "play-64bit"
+        ],
+        "icon": "https://www.beagleboard.org/app/uploads/2023/03/45front-400x297.webp",
+        "description": "BeaglePlay based on TI AM62",
+        "matching_type": "exclusive"
+      },
+      {
+        "name": "BeagleBone AI-64",
+        "tags": [
+          "ai64-64bit"
         ],
         "default": false,
-        "icon": "https://github.com/Grippy98/bb-imager/blob/qml/src/icons/ai64.png?raw=true",
-        "description": "BeagleBone Ai64 based on TDA4VM",
+        "icon": "https://www.beagleboard.org/app/uploads/2022/04/BeagleBone_AI_64-400x333.webp",
+        "description": "BeagleBone AI-64 based on TI TDA4VM",
         "matching_type": "inclusive"
       },
       {
         "name": "BeagleBone Black",
         "tags": [
-          "bbb-64bit",
           "bbb-32bit"
         ],
         "default": false,
-        "icon": "https://github.com/Grippy98/bb-imager/blob/qml/src/icons/bbb.png?raw=true",
-        "description": "BeagleBone Black based on AM335x",
+        "icon": "https://www.beagleboard.org/app/uploads/2023/07/DSC00505-400x345.webp",
+        "description": "BeagleBone Black based on TI AM335",
         "matching_type": "inclusive"
       }
     ]

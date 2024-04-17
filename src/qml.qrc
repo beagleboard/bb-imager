@@ -14,6 +14,10 @@
         <file>MsgPopup.qml</file>
         <file>icons/use_custom.png</file>
         <file>icons/erase.png</file>
+        <file>icons/beaglebone-ai-64.png</file>
+        <file>icons/beaglebone-black.png</file>
+        <file>icons/beagleplay.png</file>
+        <file>icons/beagley-ai.png</file>
         <file>icons/cat_raspberry_pi_os.png</file>
         <file>icons/cat_other_specific_purpose_operating_systems.png</file>
         <file>icons/cat_other_general_purpose_operating_systems.png</file>

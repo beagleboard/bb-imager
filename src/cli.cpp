@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2020 Raspberry Pi Ltd
+ * Copyright (C) 2024 BeagleBoard.org Foundation
  */
 
 #include "cli.h"
@@ -29,8 +30,8 @@ Cli::Cli(int &argc, char *argv[]) : QObject(nullptr)
     }
 #endif
     _app = new QCoreApplication(argc, argv);
-    _app->setOrganizationName("Raspberry Pi");
-    _app->setOrganizationDomain("raspberrypi.org");
+    _app->setOrganizationName("BeagleBoard");
+    _app->setOrganizationDomain("beagleboard.org");
     _app->setApplicationName("Imager");
     _imageWriter = new ImageWriter;
     connect(_imageWriter, &ImageWriter::success, this, &Cli::onSuccess);

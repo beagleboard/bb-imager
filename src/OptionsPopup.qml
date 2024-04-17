@@ -1,6 +1,8 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2021 Raspberry Pi Ltd
+ * Copyright (C) 2024 BeagleBoard.org Foundation
+ * *TODO*: Align with https://openbeagle.org/beagleboard/repos-arm64/-/tree/main/generic-sys-mods
  */
 
 import QtQuick 2.15
@@ -96,7 +98,7 @@ Window {
                                 TextField {
                                     id: fieldHostname
                                     enabled: chkHostname.checked
-                                    text: "raspberrypi"
+                                    text: "beagle"
                                     selectByMouse: true
                                     maximumLength: 253
                                     validator: RegularExpressionValidator { regularExpression: /[0-9A-Za-z][0-9A-Za-z-]{0,62}/ }
@@ -614,8 +616,8 @@ Window {
 
         if (chkHostname.checked && fieldHostname.length) {
             addFirstRun("CURRENT_HOSTNAME=`cat /etc/hostname | tr -d \" \\t\\n\\r\"`")
-            addFirstRun("if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then")
-            addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom set_hostname "+fieldHostname.text)
+            addFirstRun("if [ -f /usr/lib/beagle-sys-mods/imager_custom ]; then")
+            addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom set_hostname "+fieldHostname.text)
             addFirstRun("else")
             addFirstRun("   echo "+fieldHostname.text+" >/etc/hostname")
             addFirstRun("   sed -i \"s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\\t"+fieldHostname.text+"/g\" /etc/hosts")
@@ -662,8 +664,8 @@ Window {
                     }
                 }
 
-                addFirstRun("if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then")
-                addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom enable_ssh -k"+pubkeySpaceSep)
+                addFirstRun("if [ -f /usr/lib/beagle-sys-mods/imager_custom ]; then")
+                addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom enable_ssh -k"+pubkeySpaceSep)
                 addFirstRun("else")
                 addFirstRun("   install -o \"$FIRSTUSER\" -m 700 -d \"$FIRSTUSERHOME/.ssh\"")
                 addFirstRun("   install -o \"$FIRSTUSER\" -m 600 <(printf \""+pubkey.replace(/\n/g, "\\n")+"\") \"$FIRSTUSERHOME/.ssh/authorized_keys\"")
@@ -687,8 +689,8 @@ Window {
 
             if (chkSSH.checked && radioPasswordAuthentication.checked) {
                 addCloudInit("ssh_pwauth: true")
-                addFirstRun("if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then")
-                addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom enable_ssh")
+                addFirstRun("if [ -f /usr/lib/beagle-sys-mods/imager_custom ]; then")
+                addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom enable_ssh")
                 addFirstRun("else")
                 addFirstRun("   systemctl enable ssh")
                 addFirstRun("fi")
@@ -736,8 +738,8 @@ Window {
             wpaconfig += "\tpsk="+cryptedPsk+"\n"
             wpaconfig += "}\n"
 
-            addFirstRun("if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then")
-            addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom set_wlan "
+            addFirstRun("if [ -f /usr/lib/beagle-sys-mods/imager_custom ]; then")
+            addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom set_wlan "
                         +(chkWifiSSIDHidden.checked ? " -h " : "")
                         +escapeshellarg(fieldWifiSSID.text)+" "+escapeshellarg(cryptedPsk)+" "+escapeshellarg(fieldWifiCountry.editText))
             addFirstRun("else")
@@ -773,9 +775,9 @@ Window {
             kbdconfig += "XKBVARIANT=\"\"\n"
             kbdconfig += "XKBOPTIONS=\"\"\n"
 
-            addFirstRun("if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then")
-            addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom set_keymap "+escapeshellarg(fieldKeyboardLayout.editText))
-            addFirstRun("   /usr/lib/raspberrypi-sys-mods/imager_custom set_timezone "+escapeshellarg(fieldTimezone.editText))
+            addFirstRun("if [ -f /usr/lib/beagle-sys-mods/imager_custom ]; then")
+            addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom set_keymap "+escapeshellarg(fieldKeyboardLayout.editText))
+            addFirstRun("   /usr/lib/beagle-sys-mods/imager_custom set_timezone "+escapeshellarg(fieldTimezone.editText))
             addFirstRun("else")
             addFirstRun("   rm -f /etc/localtime")
             addFirstRun("   echo \""+fieldTimezone.editText+"\" >/etc/timezone")
@@ -864,7 +866,7 @@ Window {
         fieldKeyboardLayout.model = imageWriter.getKeymapLayoutList()
         fieldWifiCountry.model = imageWriter.getCountryList()
 
-        fieldHostname.text = "raspberrypi"
+        fieldHostname.text = "beagle"
         fieldUserName.text = imageWriter.getCurrentUser()
         fieldUserPassword.clear()
         radioPubKeyAuthentication.checked = false

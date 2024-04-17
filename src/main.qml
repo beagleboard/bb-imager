@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  * Copyright (C) 2020 Raspberry Pi Ltd
+ * Copyright (C) 2024 BeagleBoard.org Foundation
  */
 
 import QtQuick 2.9
@@ -97,7 +98,7 @@ ApplicationWindow {
                 id: gridLayout
                 rowSpacing: 15
 
-                 anchors.fill: parent
+                anchors.fill: parent
                 anchors.topMargin: 25
                 anchors.rightMargin: 50
                 anchors.leftMargin: 50
@@ -116,7 +117,7 @@ ApplicationWindow {
                     Text {
                         id: text0
                         color: "#ffffff"
-                        text: qsTr("Beagle Board")
+                        text: qsTr("BeagleBoard")
                         Layout.fillWidth: true
                         Layout.preferredHeight: 17
                         Layout.preferredWidth: 100
@@ -140,7 +141,7 @@ ApplicationWindow {
                             hwlist.forceActiveFocus()
                         }
                         Accessible.ignored: ospopup.visible || dstpopup.visible || hwpopup.visible
-                        Accessible.description: qsTr("Select this button to choose your target Raspberry Pi")
+                        Accessible.description: qsTr("Select this button to choose your target BeagleBoard")
                     }
                 }
 
@@ -478,7 +479,7 @@ ApplicationWindow {
             spacing: 10
 
             Text {
-                text: qsTr("Beagle Board")
+                text: qsTr("BeagleBoard")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 Layout.fillWidth: true

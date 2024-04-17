@@ -159,8 +159,7 @@ cd bb-imager/embedded
 ```
 
 The result will be in the "output" directory.
-The files can be copied to a FAT32 formatted SD card, and inserted in a Pi for testing.
-If you would like to build a (signed) netboot image there are tools for that at: https://github.com/raspberrypi/usbboot/tree/master/tools
+The files can be copied to a FAT32 formatted SD card, and inserted in a Beagle for testing.
 
 **TODO**: point to snagboot!
 

@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (C) 2020 Raspberry Pi Ltd
+# Copyright (C) 2024 BeagleBoard.org Foundation
 
 cmake_minimum_required(VERSION 3.9.4)
 OPTION (ENABLE_CHECK_VERSION "Check for version updates" ON)
@@ -350,7 +351,7 @@ else()
 
     install(TARGETS bb-imager DESTINATION bin)
     install(FILES icons/bb-imager.png DESTINATION share/icons/hicolor/128x128/apps)
-    install(FILES linux/org.raspberrypi.bb-imager.desktop DESTINATION share/applications)
+    install(FILES linux/org.beagleboard.bb-imager.desktop DESTINATION share/applications)
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.metainfo.xml" DESTINATION share/metainfo)
 endif()
 

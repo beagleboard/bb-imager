@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl_PL">
+<TS version="2.1" language="ja_JP">
 <context>
     <name>DownloadExtractThread</name>
     <message>
         <location filename="../downloadextractthread.cpp" line="196"/>
         <location filename="../downloadextractthread.cpp" line="385"/>
         <source>Error extracting archive: %1</source>
-        <translation>Błąd podczas wypakowywania archiwum: %1</translation>
+        <translation>アーカイブを展開するのに失敗しました</translation>
     </message>
     <message>
         <location filename="../downloadextractthread.cpp" line="261"/>
         <source>Error mounting FAT32 partition</source>
-        <translation>Błąd montowania partycji FAT32</translation>
+        <translation>FAT32パーティションをマウントできませんでした</translation>
     </message>
     <message>
         <location filename="../downloadextractthread.cpp" line="281"/>
         <source>Operating system did not mount FAT32 partition</source>
-        <translation>System operacyjny nie zamontował partycji FAT32</translation>
+        <translation>OSがFAT32パーティションをマウントしませんでした</translation>
     </message>
     <message>
         <location filename="../downloadextractthread.cpp" line="304"/>
         <source>Error changing to directory &apos;%1&apos;</source>
-        <translation>Błąd przejścia do katalogu &quot;%1&quot;</translation>
+        <translation>カレントディレクトリを%1に変更できませんでした</translation>
     </message>
     <message>
         <source>Error writing to storage</source>
-        <translation type="vanished">Błąd zapisu pamięci masowej</translation>
+        <translation type="vanished">ストレージに書き込むのに失敗しました</translation>
     </message>
 </context>
 <context>
@@ -34,161 +34,160 @@
     <message>
         <location filename="../downloadthread.cpp" line="118"/>
         <source>unmounting drive</source>
-        <translation>odmontowywanie dysku</translation>
+        <translation>ドライブをアンマウントしています</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="138"/>
         <source>opening drive</source>
-        <translation>otwieranie dysku</translation>
+        <translation>デバイスを開いています</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="166"/>
         <source>Error running diskpart: %1</source>
-        <translation>Błąd uruchomienia diskpart: %1</translation>
+        <translation>diskpartの実行に失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="187"/>
         <source>Error removing existing partitions</source>
-        <translation>Błąd usuwania istniejących partycji</translation>
+        <translation>既に有るパーティションを削除する際にエラーが発生しました。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="213"/>
         <source>Authentication cancelled</source>
-        <translation>Uwierzytelnianie anulowane</translation>
+        <translation>認証がキャンセルされました</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="216"/>
         <source>Error running authopen to gain access to disk device &apos;%1&apos;</source>
-        <translation>Błąd uruchomienia authopen w celu uzyskania dostępu do urządzenia dyskowego &apos;%1&apos;</translation>
+        <translation>ディスク%1にアクセスするための権限を取得するためにauthopenを実行するのに失敗しました</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="217"/>
-        <source>Please verify if &apos;Raspberry Pi Imager&apos; is allowed access to &apos;removable volumes&apos; in privacy settings (under &apos;files and folders&apos; or alternatively give it &apos;full disk access&apos;).</source>
-        <translatorcomment>Not sure if current macOS has that option (or if it got moved/renamed)</translatorcomment>
-        <translation type="unfinished">Sprawdź, czy &apos;Raspberry Pi Imager&apos; ma dostęp do &apos;woluminów wymiennych&apos; w ustawieniach prywatności (w &apos;plikach i folderach&apos; lub alternatywnie daj mu &apos;pełny dostęp do dysku&apos;).</translation>
+        <source>Please verify if &apos;BeagleBoard Imager&apos; is allowed access to &apos;removable volumes&apos; in privacy settings (under &apos;files and folders&apos; or alternatively give it &apos;full disk access&apos;).</source>
+        <translation>BeagleBoard Imagerがリムーバブルボリュームへアクセスすることが「プライバシーとセキュリティ」の「ファイルとフォルダー」の設定、または「フルディスクアクセス」の付与によって許可されているかを確認してください。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="239"/>
         <source>Cannot open storage device &apos;%1&apos;.</source>
-        <translation>Nie można otworzyć urządzenia pamięci masowej &apos;%1&apos;.</translation>
+        <translation>ストレージを開けませんでした。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="281"/>
         <source>discarding existing data on drive</source>
-        <translation>usuwanie istniejących danych na dysku</translation>
+        <translation>ドライブの現存するすべてのデータを破棄します</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="301"/>
         <source>zeroing out first and last MB of drive</source>
-        <translation>zerowanie pierwszego oraz ostatniego megabajta dysku</translation>
+        <translation>ドライブの最初と最後のMBを削除しています</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="307"/>
         <source>Write error while zero&apos;ing out MBR</source>
-        <translation>Błąd zapisu podczas zerowania MBR</translation>
+        <translation>MBRを削除している際にエラーが発生しました。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="319"/>
         <source>Write error while trying to zero out last part of card.&lt;br&gt;Card could be advertising wrong capacity (possible counterfeit).</source>
-        <translation>Błąd zapisu podczas próby wyzerowania ostatniej części karty.&lt;br&gt;;Karta może pokazywać nieprawidłową pojemność (możliwe podróbki).</translation>
+        <translation>カードの最後のパートを0で書き込む際書き込みエラーが発生しました。カードが示している容量と実際のカードの容量が違う可能性があります。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="408"/>
         <source>starting download</source>
-        <translation>rozpoczęcie pobierania</translation>
+        <translation>ダウンロードを開始中</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="468"/>
         <source>Error downloading: %1</source>
-        <translation>Błąd pobierania: %1</translation>
+        <translation>%1をダウンロードする際エラーが発生しました</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="665"/>
         <source>Access denied error while writing file to disk.</source>
-        <translation>Odmowa dostępu podczas próby zapisu pliku na dysk.</translation>
+        <translation>ディスクにファイルを書き込む際にアクセスが拒否されました。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="670"/>
         <source>Controlled Folder Access seems to be enabled. Please add both bb-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>Dostęp do &quot;Folderów Kontrolowanych&quot; wydaje się być włączony. Dodaj bb-imager.exe i fat32format.exe do listy dozwolonych aplikacji i spróbuj ponownie.</translation>
+        <translation>フォルダーへのアクセスが制限されています。許可されたアプリにbb-imager.exeとfat32format.exeを入れてもう一度お試しください。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="677"/>
         <source>Error writing file to disk</source>
-        <translation>Błąd zapisu pliku na dysk</translation>
+        <translation>ファイルをディスクに書き込んでいる際にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="699"/>
         <source>Download corrupt. Hash does not match</source>
-        <translation>Pobrany plik jest uszkodzony. Nie zgadza się&#xa0;hash</translation>
+        <translation>ダウンロードに失敗しました。ハッシュ値が一致していません。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="711"/>
         <location filename="../downloadthread.cpp" line="763"/>
         <source>Error writing to storage (while flushing)</source>
-        <translation>Błąd zapisu podczas wykonywania: flushing</translation>
+        <translation>ストレージへの書き込み中にエラーが発生しました (フラッシング中)</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="718"/>
         <location filename="../downloadthread.cpp" line="770"/>
         <source>Error writing to storage (while fsync)</source>
-        <translation>Błąd zapisu podczas wykonywania: fsync</translation>
+        <translation>ストレージへの書き込み中にエラーが発生しました（fsync中)</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="753"/>
         <source>Error writing first block (partition table)</source>
-        <translation>Błąd zapisu pierwszego bloku (tablica partycji)</translation>
+        <translation>最初のブロック（パーティションテーブル）を書き込み中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="828"/>
         <source>Error reading from storage.&lt;br&gt;SD card may be broken.</source>
-        <translation>Błąd odczytu z pamięci masowej.&lt;br&gt;Karta SD może być uszkodzona</translation>
+        <translation>ストレージを読むのに失敗しました。SDカードが壊れている可能性があります。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="847"/>
         <source>Verifying write failed. Contents of SD card is different from what was written to it.</source>
-        <translation>Weryfikacja zapisu nie powiodła się. Zawartość karty SD różni się od tego, co zostało na niej zapisane.</translation>
+        <translation>確認中にエラーが発生しました。書き込んだはずのデータが実際にSDカードに記録されたデータと一致していません。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="900"/>
         <source>Customizing image</source>
-        <translation>Dostosowywanie obrazu</translation>
+        <translation>イメージをカスタマイズしています</translation>
     </message>
     <message>
         <source>Waiting for FAT partition to be mounted</source>
-        <translation type="vanished">Oczekiwanie na zamontowanie partycji FAT</translation>
+        <translation type="vanished">FATパーティションがマウントされるのを待っています</translation>
     </message>
     <message>
         <source>Error mounting FAT32 partition</source>
-        <translation type="vanished">Błąd podczas montowania partycji FAT32</translation>
+        <translation type="vanished">FAT32パーティションをマウントする際にエラーが発生しました。</translation>
     </message>
     <message>
         <source>Operating system did not mount FAT32 partition</source>
-        <translation type="vanished">Operating system did not mount FAT32 partition</translation>
+        <translation type="vanished">OSがFAT32パーティションをマウントしませんでした。</translation>
     </message>
     <message>
         <source>Unable to customize. File &apos;%1&apos; does not exist.</source>
-        <translation type="vanished">Nie można dostosować. Plik &apos;%1&apos; nie istnieje.</translation>
+        <translation type="vanished">カスタマイズできません。%1が存在しません。</translation>
     </message>
     <message>
         <source>Error creating firstrun.sh on FAT partition</source>
-        <translation type="vanished">Błąd podczas tworzenia pliku firstrun.sh na partycji FAT</translation>
+        <translation type="vanished">FATパーティションにfirstrun.shを作成する際にエラーが発生しました</translation>
     </message>
     <message>
         <source>Error writing to config.txt on FAT partition</source>
-        <translation type="vanished">Błąd zapisu do pliku config.txt na partycji FAT</translation>
+        <translation type="vanished">FATパーティションにconfig.txtを書き込むときにエラーが発生しました</translation>
     </message>
     <message>
         <source>Error creating user-data cloudinit file on FAT partition</source>
-        <translation type="vanished">Błąd podczas tworzenia pliku cloudinit danych użytkownika na partycji FAT</translation>
+        <translation type="vanished">FATパーティションにCloud-initのuser-dataファイル名前を作成するときにエラーが発生しました</translation>
     </message>
     <message>
         <source>Error creating network-config cloudinit file on FAT partition</source>
-        <translation type="vanished">Błąd tworzenia pliku cloudinit konfiguracji sieciowej na partycji FAT</translation>
+        <translation type="vanished">FATパーティションにCloud-initのnetwork-configファイルを作成するときにエラーが発生しました</translation>
     </message>
     <message>
         <source>Error writing to cmdline.txt on FAT partition</source>
-        <translation type="vanished">Błąd zapisu do pliku cmdline.txt na partycji FAT</translation>
+        <translation type="vanished">FATパーティションにcmdline.txtを書き込む際にエラーが発生しました</translation>
     </message>
 </context>
 <context>
@@ -198,57 +197,57 @@
         <location filename="../driveformatthread.cpp" line="124"/>
         <location filename="../driveformatthread.cpp" line="185"/>
         <source>Error partitioning: %1</source>
-        <translation>Błąd partycjonowania: %1</translation>
+        <translation>パーティショニングに失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="84"/>
         <source>Error starting fat32format</source>
-        <translation>Błąd uruchamiania fat32format</translation>
+        <translation>fat32formatを開始中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="94"/>
         <source>Error running fat32format: %1</source>
-        <translation>Błąd uruchomienia fat32format: %1</translation>
+        <translation>fat32formatを実行中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="104"/>
         <source>Error determining new drive letter</source>
-        <translation>Błąd określania nowej litery dysku</translation>
+        <translation>新しいドライブレターを判断している際にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="109"/>
         <source>Invalid device: %1</source>
-        <translation>Nieprawidłowe urządzenie: %1</translation>
+        <translation>不適切なデバイス: %1</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="146"/>
         <source>Error formatting (through udisks2)</source>
-        <translation>Błąd formatowania (przez udisks2)</translation>
+        <translation>udisk2を介してフォーマットするのに失敗しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="174"/>
         <source>Error starting sfdisk</source>
-        <translation>Błąd uruchamienia sfdisk</translation>
+        <translation>sfdiskを開始中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="199"/>
         <source>Partitioning did not create expected FAT partition %1</source>
-        <translation>Partycjonowanie nie utworzyło oczekiwanej partycji FAT %1</translation>
+        <translation>パーティショニングが想定したFATパーティション %1を作りませんでした</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="208"/>
         <source>Error starting mkfs.fat</source>
-        <translation>Błąd uruchamiania mkfs.fat</translation>
+        <translation>mkfs.fatを開始中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="218"/>
         <source>Error running mkfs.fat: %1</source>
-        <translation>Błąd uruchomienia mkfs.fat: %1</translation>
+        <translation>mkfs.fatを実行中にエラーが発生しました: %1</translation>
     </message>
     <message>
         <location filename="../driveformatthread.cpp" line="225"/>
         <source>Formatting not implemented for this platform</source>
-        <translation>Formatowanie nie zostało zaimplementowane dla tej platformy</translation>
+        <translation>このプラットフォームではフォーマットできません。</translation>
     </message>
 </context>
 <context>
@@ -256,22 +255,22 @@
     <message>
         <location filename="../imagewriter.cpp" line="253"/>
         <source>Storage capacity is not large enough.&lt;br&gt;Needs to be at least %1 GB.</source>
-        <translation>Pojemność pamięci nie jest wystarczająco duża.&lt;br&gt;Musi wynosić co najmniej %1 GB.</translation>
+        <translation>ストレージの容量が足りません。少なくとも%1GBは必要です。</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="259"/>
         <source>Input file is not a valid disk image.&lt;br&gt;File size %1 bytes is not a multiple of 512 bytes.</source>
-        <translation>Plik wejściowy nie jest prawidłowym obrazem dysku.&lt;br&gt;Rozmiar pliku %1 bajtów nie jest wielokrotnością 512 bajtów.</translation>
+        <translation>入力されたファイルは適切なディスクイメージファイルではありません。ファイルサイズの%1は512バイトの倍数ではありません。</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="654"/>
         <source>Downloading and writing image</source>
-        <translation>Pobieranie i zapisywanie obrazu</translation>
+        <translation>イメージをダウンロードして書き込んでいます</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="787"/>
         <source>Select image</source>
-        <translation>Wybierz obraz</translation>
+        <translation>イメージを選ぶ</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="962"/>
@@ -286,7 +285,7 @@
     <message>
         <location filename="../imagewriter.cpp" line="1185"/>
         <source>Would you like to prefill the wifi password from the system keychain?</source>
-        <translation>Czy chcesz wstępnie wypełnić hasło Wi-Fi z pęku kluczy systemu?</translation>
+        <translation>Wifiのパスワードをシステムのキーチェーンから読み取って設定しますか？</translation>
     </message>
 </context>
 <context>
@@ -294,12 +293,12 @@
     <message>
         <location filename="../localfileextractthread.cpp" line="34"/>
         <source>opening image file</source>
-        <translation>otwieranie pliku obrazu</translation>
+        <translation>イメージファイルを開いています</translation>
     </message>
     <message>
         <location filename="../localfileextractthread.cpp" line="39"/>
         <source>Error opening image file</source>
-        <translation>Błąd podczas otwierania pliku obrazu</translation>
+        <translation>イメージファイルを開く際にエラーが発生しました</translation>
     </message>
 </context>
 <context>
@@ -307,22 +306,22 @@
     <message>
         <location filename="../MsgPopup.qml" line="98"/>
         <source>NO</source>
-        <translation>NIE</translation>
+        <translation>いいえ</translation>
     </message>
     <message>
         <location filename="../MsgPopup.qml" line="107"/>
         <source>YES</source>
-        <translation>TAK</translation>
+        <translation>はい</translation>
     </message>
     <message>
         <location filename="../MsgPopup.qml" line="116"/>
         <source>CONTINUE</source>
-        <translation>KONTYNUUJ</translation>
+        <translation>続ける</translation>
     </message>
     <message>
         <location filename="../MsgPopup.qml" line="124"/>
         <source>QUIT</source>
-        <translation>ZAMKNIJ</translation>
+        <translation>やめる</translation>
     </message>
 </context>
 <context>
@@ -330,60 +329,56 @@
     <message>
         <location filename="../OptionsPopup.qml" line="20"/>
         <source>OS Customization</source>
-        <translation>Konfiguracja systemu</translation>
-    </message>
-    <message>
-        <source>OS customization options</source>
-        <translation type="vanished">Opcje konfiguracji systemu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>for this session only</source>
-        <translation type="vanished">tylko dla tej sesji</translation>
+        <translation type="vanished">このセッションでのみ有効にする</translation>
     </message>
     <message>
         <source>to always use</source>
-        <translation type="vanished">do użycia na zawsze</translation>
+        <translation type="vanished">いつも使う設定にする</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="62"/>
         <source>General</source>
-        <translation>Ogólne</translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="70"/>
         <source>Services</source>
-        <translation>Usługi</translation>
+        <translation>サービス</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="73"/>
         <source>Options</source>
-        <translation>Opcje</translation>
+        <translation>オプション</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="89"/>
         <source>Set hostname:</source>
-        <translation>ustaw hostname:</translation>
+        <translation>ホスト名:</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="112"/>
         <source>Set username and password</source>
-        <translation>Ustaw login i hasło</translation>
+        <translation>ユーザー名とパスワードを設定する</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="134"/>
         <source>Username:</source>
-        <translation>Login:</translation>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="151"/>
         <location filename="../OptionsPopup.qml" line="220"/>
         <source>Password:</source>
-        <translation>Hasło:</translation>
+        <translation>パスワード:</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="187"/>
         <source>Configure wireless LAN</source>
-        <translation>Skonfiguruj sieć Wi-Fi</translation>
+        <translation>Wi-Fiを設定する</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="206"/>
@@ -393,93 +388,89 @@
     <message>
         <location filename="../OptionsPopup.qml" line="239"/>
         <source>Show password</source>
-        <translation>Pokaż hasło</translation>
+        <translation>パスワードを見る</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="245"/>
         <source>Hidden SSID</source>
-        <translation>Ukryte SSID</translation>
+        <translation>ステルスSSID</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="251"/>
         <source>Wireless LAN country:</source>
-        <translation>Kraj Wi-Fi:</translation>
+        <translation>Wifiを使う国:</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="262"/>
         <source>Set locale settings</source>
-        <translation>Ustawienia lokalizacji</translation>
+        <translation>ロケール設定をする</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="272"/>
         <source>Time zone:</source>
-        <translation>Strefa czasowa:</translation>
+        <translation>タイムゾーン:</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="282"/>
         <source>Keyboard layout:</source>
-        <translation>Układ klawiatury:</translation>
+        <translation>キーボードレイアウト:</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="299"/>
         <source>Enable SSH</source>
-        <translation>Włącz SSH</translation>
+        <translation>SSHを有効化する</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="318"/>
         <source>Use password authentication</source>
-        <translation>Używaj uwierzytelniania hasłem</translation>
+        <translation>パスワード認証を使う</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="328"/>
         <source>Allow public-key authentication only</source>
-        <translation>Pozwól tylko na uwierzytelnianie kluczem publiczym</translation>
+        <translation>公開鍵認証のみを許可する</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="346"/>
         <source>Set authorized_keys for &apos;%1&apos;:</source>
-        <translation>Ustaw authorized_keys dla &apos;%1&apos;:</translation>
+        <translation>ユーザー%1のためのauthorized_keys</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="358"/>
         <source>RUN SSH-KEYGEN</source>
-        <translation>Uruchom SSH-KEYGEN</translation>
+        <translation>ssh-keygenを実行する</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="376"/>
         <source>Play sound when finished</source>
-        <translation>Odegraj dźwięk po zakończeniu</translation>
+        <translation>終わったときに音を鳴らす</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="380"/>
         <source>Eject media when finished</source>
-        <translation>Wysuń nośnik po zakończeniu</translation>
+        <translation>終わったときにメディアを取り出す</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="384"/>
         <source>Enable telemetry</source>
-        <translation>Włącz telemetrię</translation>
+        <translation>テレメトリーを有効化</translation>
     </message>
     <message>
         <location filename="../OptionsPopup.qml" line="398"/>
         <source>SAVE</source>
-        <translation>ZAPISZ</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>Disable overscan</source>
-        <translation type="vanished">wyłącz overscan</translation>
-    </message>
-    <message>
-        <source>Set password for &apos;%1&apos; user:</source>
-        <translation type="vanished">Ustaw hasło dla użytkownika &apos;%1&apos;:</translation>
+        <translation type="vanished">オーバースキャンを無効化する</translation>
     </message>
     <message>
         <source>Skip first-run wizard</source>
-        <translation type="vanished">Pomiń kreator pierwszego uruchomienia</translation>
+        <translation type="vanished">最初のセットアップウィザートをスキップする</translation>
     </message>
     <message>
         <source>Persistent settings</source>
-        <translation type="vanished">Ustawienia trwałe</translation>
+        <translation type="vanished">永続的な設定</translation>
     </message>
 </context>
 <context>
@@ -487,7 +478,7 @@
     <message>
         <location filename="../linux/linuxdrivelist.cpp" line="119"/>
         <source>Internal SD card reader</source>
-        <translation>Wbudowany czytnik kart SD</translation>
+        <translation>SDカードリーダー</translation>
     </message>
 </context>
 <context>
@@ -495,79 +486,79 @@
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="77"/>
         <source>Use OS customization?</source>
-        <translation>Zastosować ustawienia systemu operacyjnego?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="92"/>
         <source>Would you like to apply OS customization settings?</source>
-        <translation>Czy chcesz zastosować ustawienia personalizacji systemu operacyjnego?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="134"/>
         <source>NO</source>
-        <translation>NIE</translation>
+        <translation>いいえ</translation>
     </message>
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="115"/>
         <source>NO, CLEAR SETTINGS</source>
-        <translation>NIE, WYCZYŚĆ USTAWIENIA</translation>
+        <translation>いいえ、設定をクリアする</translation>
     </message>
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="125"/>
         <source>YES</source>
-        <translation>TAK</translation>
+        <translation>はい</translation>
     </message>
     <message>
         <location filename="../UseSavedSettingsPopup.qml" line="102"/>
         <source>EDIT SETTINGS</source>
-        <translation>EDYTUJ USTAWIENIA</translation>
+        <translation>設定を編集する</translation>
     </message>
 </context>
 <context>
     <name>main</name>
     <message>
         <location filename="../main.qml" line="22"/>
-        <source>Raspberry Pi Imager v%1</source>
-        <translation>Raspberry Pi Imager v%1</translation>
+        <source>BeagleBoard Imager v%1</source>
+        <translation>BeagleBoard Imager v%1</translation>
     </message>
     <message>
         <location filename="../main.qml" line="119"/>
         <location filename="../main.qml" line="481"/>
-        <source>Beagle Board</source>
-        <translation>Model Raspberry Pi</translation>
+        <source>BeagleBoard</source>
+        <translation>BeagleBoardデバイス</translation>
     </message>
     <message>
         <location filename="../main.qml" line="131"/>
         <source>CHOOSE DEVICE</source>
-        <translation>WYBIERZ MODEL</translation>
+        <translation>デバイスを選択</translation>
     </message>
     <message>
         <location filename="../main.qml" line="143"/>
-        <source>Select this button to choose your target Raspberry Pi</source>
-        <translation>Wybierz ten przycisk, aby wybrać docelowy model Raspberry Pi</translation>
+        <source>Select this button to choose your target BeagleBoard</source>
+        <translation>対象のBeagleBoardを選択するには、このボタンを押してください。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="157"/>
         <location filename="../main.qml" line="584"/>
         <source>Operating System</source>
-        <translation>System Operacyjny</translation>
+        <translation>OS</translation>
     </message>
     <message>
         <location filename="../main.qml" line="168"/>
         <location filename="../main.qml" line="1638"/>
         <source>CHOOSE OS</source>
-        <translation>WYBIERZ OS</translation>
+        <translation>OSを選択</translation>
     </message>
     <message>
         <location filename="../main.qml" line="180"/>
         <source>Select this button to change the operating system</source>
-        <translation>Wybierz ten przycisk, aby zmienić system operacyjny</translation>
+        <translation>OSを変更するにはこのボタンを押してください</translation>
     </message>
     <message>
         <location filename="../main.qml" line="194"/>
         <location filename="../main.qml" line="979"/>
         <source>Storage</source>
-        <translation>Dysk</translation>
+        <translation>ストレージ</translation>
     </message>
     <message>
         <location filename="../main.qml" line="330"/>
@@ -583,242 +574,238 @@
         <location filename="../main.qml" line="205"/>
         <location filename="../main.qml" line="1317"/>
         <source>CHOOSE STORAGE</source>
-        <translation>WYBIERZ DYSK</translation>
+        <translation>ストレージを選択</translation>
     </message>
     <message>
         <source>WRITE</source>
-        <translation type="vanished">ZAPISZ</translation>
+        <translation type="vanished">書き込む</translation>
     </message>
     <message>
         <location filename="../main.qml" line="219"/>
         <source>Select this button to change the destination storage device</source>
-        <translation>Wybierz ten przycisk, aby zmienić docelowe urządzenie pamięci masowej</translation>
+        <translation>書き込み先のストレージデバイスを選択するにはこのボタンを押してください</translation>
     </message>
     <message>
         <location filename="../main.qml" line="265"/>
         <source>CANCEL WRITE</source>
-        <translation>ANULUJ ZAPIS</translation>
+        <translation>書き込みをキャンセル</translation>
     </message>
     <message>
         <location filename="../main.qml" line="268"/>
         <location filename="../main.qml" line="1240"/>
         <source>Cancelling...</source>
-        <translation>Anulowanie...</translation>
+        <translation>キャンセル中です...</translation>
     </message>
     <message>
         <location filename="../main.qml" line="280"/>
         <source>CANCEL VERIFY</source>
-        <translation>ANULUJ WERYFIKACJE</translation>
+        <translation>確認をやめる</translation>
     </message>
     <message>
         <location filename="../main.qml" line="283"/>
         <location filename="../main.qml" line="1263"/>
         <location filename="../main.qml" line="1336"/>
         <source>Finalizing...</source>
-        <translation>Finalizowanie...</translation>
+        <translation>最終処理をしています...</translation>
     </message>
     <message>
         <location filename="../main.qml" line="292"/>
         <source>Next</source>
-        <translation>Kontynuuj</translation>
+        <translation>次へ</translation>
     </message>
     <message>
         <location filename="../main.qml" line="298"/>
         <source>Select this button to start writing the image</source>
-        <translation>Wybierz ten przycisk, aby rozpocząć zapisywanie obrazu</translation>
+        <translation>書き込みをスタートさせるにはこのボタンを押してください</translation>
     </message>
     <message>
         <source>Select this button to access advanced settings</source>
-        <translation type="vanished">Wybierz ten przycisk, aby uzyskać dostęp do ustawień zaawansowanych</translation>
+        <translation type="vanished">詳細な設定を変更するのならこのボタンを押してください</translation>
     </message>
     <message>
         <location filename="../main.qml" line="320"/>
         <source>Using custom repository: %1</source>
-        <translation>Używanie niestandardowego repozytorium: %1</translation>
+        <translation>カスタムレポジトリを使います: %1</translation>
     </message>
     <message>
         <location filename="../main.qml" line="339"/>
         <source>Keyboard navigation: &lt;tab&gt; navigate to next button &lt;space&gt; press button/select item &lt;arrow up/down&gt; go up/down in lists</source>
-        <translation>Nawigacja za pomocą klawiatury: &lt;tab&gt; przejdź do następnego przycisku &lt;spacja&gt; naciśnij przycisk/wybierz element &lt;strzałka w górę/w dół&gt; przejdź w górę/w dół na listach</translation>
+        <translation>キーボードの操作: 次のボタンに移動する→Tabキー  ボタンを押す/選択する→Spaceキー  上に行く/下に行く→矢印キー（上下）</translation>
     </message>
     <message>
         <location filename="../main.qml" line="360"/>
         <source>Language: </source>
-        <translation>Język: </translation>
+        <translation>言語: </translation>
     </message>
     <message>
         <location filename="../main.qml" line="383"/>
         <source>Keyboard: </source>
-        <translation>Klawiatura: </translation>
+        <translation>キーボード: </translation>
     </message>
     <message>
         <source>Pi model:</source>
-        <translation type="vanished">Model Pi:</translation>
+        <translation type="vanished">BeagleBoard モデル:</translation>
     </message>
     <message>
         <location filename="../main.qml" line="500"/>
         <source>[ All ]</source>
-        <translation>[ Wszystko ]</translation>
+        <translation>[すべて]</translation>
     </message>
     <message>
         <location filename="../main.qml" line="651"/>
         <source>Back</source>
-        <translation>Cofnij</translation>
+        <translation>戻る</translation>
     </message>
     <message>
         <location filename="../main.qml" line="652"/>
         <source>Go back to main menu</source>
-        <translation>Cofnij do głównego menu</translation>
+        <translation>メインメニューへ戻る</translation>
     </message>
     <message>
         <location filename="../main.qml" line="894"/>
         <source>Released: %1</source>
-        <translation>Wydany: %1</translation>
+        <translation>リリース日時: %1</translation>
     </message>
     <message>
         <location filename="../main.qml" line="904"/>
         <source>Cached on your computer</source>
-        <translation>W pamięci cache komputera</translation>
+        <translation>コンピュータにキャッシュされたファイル</translation>
     </message>
     <message>
         <location filename="../main.qml" line="906"/>
         <source>Local file</source>
-        <translation>Plik lokalny</translation>
+        <translation>ローカルファイル</translation>
     </message>
     <message>
         <location filename="../main.qml" line="907"/>
         <source>Online - %1 GB download</source>
-        <translation>Online - Pobrano %1 GB</translation>
+        <translation>インターネットからダウンロード - %1 GB</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1042"/>
         <location filename="../main.qml" line="1094"/>
         <location filename="../main.qml" line="1100"/>
         <source>Mounted as %1</source>
-        <translation>Zamontowany jako %1</translation>
+        <translation>%1 としてマウントされています</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1096"/>
         <source>[WRITE PROTECTED]</source>
-        <translation>[ZABEZPIECZONY PRZED ZAPISEM]</translation>
+        <translation>[書き込み禁止]</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1141"/>
         <source>Are you sure you want to quit?</source>
-        <translation>Czy na pewno chcesz zakończyć?</translation>
+        <translation>本当にやめますか？</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1142"/>
-        <source>Raspberry Pi Imager is still busy.&lt;br&gt;Are you sure you want to quit?</source>
-        <translation>Raspberry Pi Imager jest wciąż zajęty.&lt;br&gt;Czy na pewno chcesz zakończyć??</translation>
+        <source>BeagleBoard Imager is still busy.&lt;br&gt;Are you sure you want to quit?</source>
+        <translation>BeagleBoard Imagerは現在まだ処理中です。&lt;bt&gt;本当にやめますか？</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1153"/>
         <source>Warning</source>
-        <translation>Uwaga</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1162"/>
         <source>Preparing to write...</source>
-        <translation>Przygotowanie do zapisu...</translation>
+        <translation>書き込み準備中...</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1176"/>
         <source>All existing data on &apos;%1&apos; will be erased.&lt;br&gt;Are you sure you want to continue?</source>
-        <translation>Wszystkie istniejące dane na &apos;%1&apos; zostaną usunięte.&lt;br&gt;Czy na pewno chcesz kontynuować?</translation>
+        <translation>%1 に存在するすべてのデータは完全に削除されます。本当に続けますか？</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1191"/>
         <source>Update available</source>
-        <translation>Dostępna aktualizacja</translation>
+        <translation>アップデートがあります</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1192"/>
         <source>There is a newer version of Imager available.&lt;br&gt;Would you like to visit the website to download it?</source>
-        <translation>Dostępna jest nowsza wersja Raspberry Pi Imager.&lt;br&gt;Czy chcesz otworzyć stronę, aby go ściągnąć?</translation>
+        <translation>新しいバージョンのImagerがあります。&lt;br&gt;ダウンロードするためにウェブサイトを開きますか？</translation>
     </message>
     <message>
         <source>Error downloading OS list from Internet</source>
-        <translation type="vanished">Błąd pobierania listy OS&apos;ów z internetu</translation>
+        <translation type="vanished">OSのリストをダウンロードする際にエラーが発生しました。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1243"/>
         <source>Writing... %1%</source>
-        <translation>Zapisywanie... %1%</translation>
+        <translation>書き込み中... %1%</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1266"/>
         <source>Verifying... %1%</source>
-        <translation>Weryfikacja... %1%</translation>
+        <translation>確認中... %1%</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1273"/>
         <source>Preparing to write... (%1)</source>
-        <translation>Przygotowanie do zapisu... (%1)</translation>
+        <translation>書き込み準備中... (%1)</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1293"/>
         <source>Error</source>
-        <translation>Błąd</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1300"/>
         <source>Write Successful</source>
-        <translation>Zapis zakończony sukcesem</translation>
+        <translation>書き込みが正常に終了しました</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1301"/>
         <location filename="../imagewriter.cpp" line="596"/>
         <source>Erase</source>
-        <translation>Usuń</translation>
+        <translation>削除</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1302"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has been erased&lt;br&gt;&lt;br&gt;You can now remove the SD card from the reader</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; został skasowany&lt;br&gt;&lt;br&gt; Możesz teraz wyjąć kartę SD z czytnika.</translation>
+        <translation>&lt;b%gt;%1&lt;/b&gt; は削除されました。&lt;br&gt;&lt;bt&gt;SDカードをSDカードリーダーから取り出すことができます。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1309"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has been written to &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;&lt;br&gt;You can now remove the SD card from the reader</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; został zapisany na &lt;b&gt;%2&lt;/b&gt;&lt;br&gt;&lt;br&gt; Możesz teraz wyjąć kartę SD z czytnika.</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; は&lt;b&gt;%2&lt;/b&gt;に書き込まれました。&lt;br&gt;&lt;br&gt;SDカードをSDカードリーダーから取り出すことができます。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1463"/>
         <source>Error parsing os_list.json</source>
-        <translation>Błąd parsowania os_list.json</translation>
+        <translation>os_list.jsonの処理中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="597"/>
         <source>Format card as FAT32</source>
-        <translation>Sformatuj kartę jako FAT32</translation>
+        <translation>カードをFAT32でフォーマットする</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="603"/>
         <source>Use custom</source>
-        <translation>Użyj innego obrazu</translation>
+        <translation>カスタムイメージを使う</translation>
     </message>
     <message>
         <location filename="../imagewriter.cpp" line="604"/>
         <source>Select a custom .img from your computer</source>
-        <translation>Wybierz plik .img z komputera</translation>
+        <translation>自分で用意したイメージファイルを使う</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1712"/>
         <source>Connect an USB stick containing images first.&lt;br&gt;The images must be located in the root folder of the USB stick.</source>
-        <translation>Najpierw podłącz pamięć USB zawierającą obrazy.&lt;br&gt;Obrazy muszą znajdować się w folderze głównym pamięci USB.</translation>
+        <translation>最初にイメージファイルがあるUSBメモリを接続してください。&lt;br&gt;イメージファイルはUSBメモリの一番上（ルートフォルダー）に入れてください。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1728"/>
         <source>SD card is write protected.&lt;br&gt;Push the lock switch on the left side of the card upwards, and try again.</source>
-        <translation>arta SD jest zabezpieczona przed zapisem.&lt;br&gt;Przesuń przełącznik blokady po lewej stronie karty do góry i spróbuj ponownie.</translation>
-    </message>
-    <message>
-        <source>Select this button to change the destination SD card</source>
-        <translation type="vanished">Wybierz ten przycisk, aby zmienić docelową kartę SD</translation>
+        <translation>SDカードへの書き込みが制限されています。&lt;br&gt;カードの左上にあるロックスイッチを上げてロックを解除し、もう一度お試しください。</translation>
     </message>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; has been written to &lt;b&gt;%2&lt;/b&gt;</source>
-        <translation type="vanished">&lt;b&gt;%1&lt;/b&gt; zostało zapisane w &lt;b&gt;%2&lt;/b&gt;</translation>
+        <translation type="vanished">&lt;b&gt;%1&lt;/b&gt; は&lt;b&gt;%2&lt;/b&gt;に書き込まれました。</translation>
     </message>
 </context>
 </TS>
