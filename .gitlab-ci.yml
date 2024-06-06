@@ -3,7 +3,7 @@ build:
   parallel:
     matrix:
       - IMAGE: debian-build
-        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf]
+        TAG: [docker-amd64, docker-aarch64-ci]
         #TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
   image: registry.git.beagleboard.org/jkridner/${IMAGE}
   tags:
@@ -28,8 +28,13 @@ build-macos:
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
-    - codesign --deep --force --verify --verbose --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" --options runtime bb-imager.app
-    - create-dmg --volname "BeagleBoard Imager" --codesign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" --window-size 800 400 --app-drop-link 600 185 --icon-size 100 --icon bb-imager.app 200 190 bb-imager.dmg bb-imager.app
+    - otool -L bb-imager.app/Contents/MacOS/bb-imager
+    - security unlock-keychain -p ${MACOS_PASSWORD} ~/Library/Keychains/login.keychain
+    - codesign --deep --force --verify --verbose --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.app
+    - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
+    - cp -R bb-imager.app bb-imager.dmg.tmp
+    - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
+    - codesign --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.dmg
     - cp -r bb-imager.app bb-imager.dmg ../public
   artifacts:
     paths:
@@ -49,7 +54,7 @@ pages:
   dependencies:
     - "build: [debian-build, docker-amd64]"
     - "build: [debian-build, docker-aarch64-ci]"
-    - "build: [debian-build, docker-armhf]"
+    #- "build: [debian-build, docker-armhf]"
     #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
     #- "build-windows"
