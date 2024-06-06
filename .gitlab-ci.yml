@@ -3,10 +3,8 @@ build:
   parallel:
     matrix:
       - IMAGE: debian-build
-        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf]
-      - IMAGE: ubuntu-build
-        TAG: [docker-riscv64-ci]
-  image: beagle/${IMAGE}
+        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
+  image: registry.git.beagleboard.org/jkridner/${IMAGE}
   tags:
     - ${TAG}
   before_script:
@@ -22,14 +20,38 @@ build:
     paths:
       - public
 
+build-macos:
+  stage: build
+  tags: ["macos"]
+  script:
+    - mkdir -p public
+    - mkdir build && cd build && cmake ../src
+    - make
+    - codesign --deep --force --verify --verbose --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" --options runtime bb-imager.app
+    - create-dmg --volname "BeagleBoard Imager" --codesign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" --window-size 800 400 --app-drop-link 600 185 --icon-size 100 --icon bb-imager.app 200 190 bb-imager.dmg bb-imager.app
+    - cp -r bb-imager.app bb-imager.dmg ../public
+  artifacts:
+    paths:
+      - public
+
+#build-windows:
+  #stage: build
+  #tags: ["windows"]
+  #script:
+  #artifacts:
+    #paths:
+      #- public
+
 pages:
-  image: beagle/debian-build
+  image: registry.git.beagleboard.org/jkridner/debian-build
   stage: deploy
   dependencies:
     - "build: [debian-build, docker-amd64]"
     - "build: [debian-build, docker-aarch64-ci]"
     - "build: [debian-build, docker-armhf]"
-    - "build: [ubuntu-build, docker-riscv64-ci]"
+    - "build: [debian-build, docker-riscv64-ci]"
+    - "build-macos"
+    #- "build-windows"
   script:
     - apindex public
   artifacts:
