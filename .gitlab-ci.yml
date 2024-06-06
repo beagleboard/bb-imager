@@ -23,18 +23,19 @@ build:
 
 build-macos:
   stage: build
-  tags: ["macos"]
+  tags:
+    - macos
   script:
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - security unlock-keychain -p ${MACOS_PASSWORD} ~/Library/Keychains/login.keychain
-    - codesign --deep --force --verify --verbose --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.app
+    - security unlock-keychain -p ${MACOS_PASSWORD} /Users/jkridner/Library/Keychains/login.keychain
+    - codesign --deep --force --verify --verbose --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" bb-imager.app
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
     - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
-    - codesign --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.dmg
+    - codesign --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" bb-imager.dmg
     - cp -r bb-imager.app bb-imager.dmg ../public
   artifacts:
     paths:
