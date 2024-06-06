@@ -26,6 +26,7 @@ build-macos:
   tags:
     - macos
   script:
+    - export PATH="$PATH:/opt/local/bin"
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
