@@ -3,7 +3,8 @@ build:
   parallel:
     matrix:
       - IMAGE: debian-build
-        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
+        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf]
+        #TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
   image: registry.git.beagleboard.org/jkridner/${IMAGE}
   tags:
     - ${TAG}
@@ -49,7 +50,7 @@ pages:
     - "build: [debian-build, docker-amd64]"
     - "build: [debian-build, docker-aarch64-ci]"
     - "build: [debian-build, docker-armhf]"
-    - "build: [debian-build, docker-riscv64-ci]"
+    #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
     #- "build-windows"
   script:
