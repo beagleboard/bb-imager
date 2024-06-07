@@ -27,12 +27,12 @@ build-macos:
   tags:
     - macos
   script:
-    - export PATH="$PATH:/opt/local/bin"
+    - export PATH="$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin"
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
     - security unlock-keychain -p "${MACOS_PASSWORD}" /Users/jkridner/Library/Keychains/login.keychain
-    - /opt/local/libexec/qt5/bin/macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
+    - macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
       #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Frameworks/*
       #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Plugins/*/*.dylib
