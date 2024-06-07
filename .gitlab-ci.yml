@@ -3,7 +3,7 @@ build:
   parallel:
     matrix:
       - IMAGE: debian-build
-        TAG: [docker-amd64, docker-aarch64-ci]
+        TAG: [docker-amd64, docker-aarch64-ci, docker-armhf]
         #TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
   image: registry.git.beagleboard.org/jkridner/${IMAGE}
   tags:
