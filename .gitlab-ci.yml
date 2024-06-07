@@ -40,7 +40,8 @@ build-macos:
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
     - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
-    - codesign --sign "${MACOS_KEY_ID}" bb-imager.dmg
+    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager.dmg
+    - codesign -dvv bb-imager.dmg
     - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
       #- xcrun notarytool store-credentials --apple-id "${MACOS_ID}" --password "{MACOS_NOTARY_PASSWORD}" --team-id "${MACOS_TEAM_ID}" notary-credentials
     - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
