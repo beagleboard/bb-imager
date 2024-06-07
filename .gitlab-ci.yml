@@ -31,12 +31,11 @@ build-macos:
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
-    - security unlock-keychain -p "${MACOS_PASSWORD}" /Users/jkridner/Library/Keychains/login.keychain
+    - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
     - macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-      #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Frameworks/*
-      #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Plugins/*/*.dylib
     - codesign --deep --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
+    - codesign -vvv --deep --strict bb-imager.app
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
     - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
