@@ -30,13 +30,20 @@ build-macos:
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
+    - security unlock-keychain -p "${MACOS_PASSWORD}" /Users/jkridner/Library/Keychains/login.keychain
+    - /opt/local/libexec/qt5/bin/macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - security unlock-keychain -p ${MACOS_PASSWORD} /Users/jkridner/Library/Keychains/login.keychain
-    - codesign --deep --force --verify --verbose --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" bb-imager.app
+      #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Frameworks/*
+      #- codesign --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/Plugins/*/*.dylib
+    - codesign --deep --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
     - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
-    - codesign --sign "91DAB8486F148C8EDD134138F61F0AD5B3EFA59B" bb-imager.dmg
+    - codesign --sign "${MACOS_KEY_ID}" bb-imager.dmg
+    - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
+    - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
+    - xcrun stapler staple bb-imager.dmg
+    - spctl -a -v --type install bb-imager.dmg
     - cp -r bb-imager.app bb-imager.dmg ../public
   artifacts:
     paths:
@@ -53,10 +60,12 @@ build-macos:
 pages:
   image: registry.git.beagleboard.org/jkridner/debian-build
   stage: deploy
+  tags:
+    - docker-amd64
   dependencies:
     - "build: [debian-build, docker-amd64]"
     - "build: [debian-build, docker-aarch64-ci]"
-    #- "build: [debian-build, docker-armhf]"
+    - "build: [debian-build, docker-armhf]"
     #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
     #- "build-windows"
