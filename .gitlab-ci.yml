@@ -34,7 +34,8 @@ build-macos:
     - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
     - macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - codesign --deep --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
+    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/MacOS/bb-imager
+    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
     - codesign -vvv --deep --strict bb-imager.app
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
