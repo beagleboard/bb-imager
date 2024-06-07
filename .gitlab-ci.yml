@@ -72,6 +72,8 @@ pages:
     - "build-macos"
     #- "build-windows"
   script:
+    - git rev-parse HEAD > public/git-tag.txt
+    - git show -s --format=%ci HEAD > public/git-date.txt
     - apindex public
   artifacts:
     paths:
