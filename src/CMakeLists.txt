@@ -321,12 +321,12 @@ elseif(APPLE)
     set(EXTRALIBS ${EXTRALIBS} ${CoreFoundation} ${DiskArbitration} ${Security} ${Cocoa} ${IOKit})
     set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE YES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/mac/Info.plist.in)
 
-    find_program(MACDEPLOYQT "macdeployqt" PATHS
-        "${${QT}_DIR}/../../../bin"
-        "/opt/local/libexec/qt5/bin")
-    if (NOT MACDEPLOYQT)
-        message(FATAL_ERROR "Unable to locate macdeployqt")
-    endif()
+    #find_program(MACDEPLOYQT "macdeployqt" PATHS
+    #    "${${QT}_DIR}/../../../bin"
+    #    "/opt/local/libexec/qt5/bin")
+    #if (NOT MACDEPLOYQT)
+    #    message(FATAL_ERROR "Unable to locate macdeployqt")
+    #endif()
 
     #add_custom_command(TARGET ${PROJECT_NAME}
     #    POST_BUILD

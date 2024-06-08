@@ -1,9 +1,10 @@
-build:
+build-debian:
   stage: build
   parallel:
     matrix:
       - IMAGE: debian-build
         TAG: [docker-amd64, docker-aarch64-ci]
+        #TAG: [docker-amd64, docker-aarch64-ci, docker-armhf]
         #TAG: [docker-amd64, docker-aarch64-ci, docker-armhf, docker-riscv64-ci]
   image: registry.git.beagleboard.org/jkridner/${IMAGE}
   tags:
@@ -23,18 +24,29 @@ build:
 
 build-macos:
   stage: build
-  tags: ["macos"]
+  tags:
+    - macos
   script:
+    - export PATH="$PATH:/opt/local/bin:/opt/local/libexec/qt5/bin"
     - mkdir -p public
     - mkdir build && cd build && cmake ../src
     - make
+    - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
+    - macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - security unlock-keychain -p ${MACOS_PASSWORD} ~/Library/Keychains/login.keychain
-    - codesign --deep --force --verify --verbose --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.app
+    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/MacOS/bb-imager
+    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
+    - codesign -vvv --deep --strict bb-imager.app
     - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
     - cp -R bb-imager.app bb-imager.dmg.tmp
     - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
-    - codesign --sign "Apple Distribution: BeagleBoard org Foundation (BWWLLRK896)" bb-imager.dmg
+    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager.dmg
+    - codesign -dvv bb-imager.dmg
+    - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
+      #- xcrun notarytool store-credentials --apple-id "${MACOS_ID}" --password "{MACOS_NOTARY_PASSWORD}" --team-id "${MACOS_TEAM_ID}" notary-credentials
+    - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
+    - xcrun stapler staple bb-imager.dmg
+    - spctl -a -v --type install bb-imager.dmg
     - cp -r bb-imager.app bb-imager.dmg ../public
   artifacts:
     paths:
@@ -51,14 +63,18 @@ build-macos:
 pages:
   image: registry.git.beagleboard.org/jkridner/debian-build
   stage: deploy
+  tags:
+    - docker-amd64
   dependencies:
-    - "build: [debian-build, docker-amd64]"
-    - "build: [debian-build, docker-aarch64-ci]"
+    - "build-debian: [debian-build, docker-amd64]"
+    - "build-debian: [debian-build, docker-aarch64-ci]"
     #- "build: [debian-build, docker-armhf]"
     #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
     #- "build-windows"
   script:
+    - git rev-parse HEAD > public/git-tag.txt
+    - git show -s --format=%ci HEAD > public/git-date.txt
     - apindex public
   artifacts:
     paths:
