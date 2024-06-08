@@ -26,6 +26,7 @@ set(HEADERS config.h imagewriter.h networkaccessmanagerfactory.h nan.h drivelist
 # Add dependencies
 if (APPLE)
     set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
+    set(BUILD_SHARED_LIBS OFF)
     set_source_files_properties("icons/bb-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     set(DEPENDENCIES acceleratedcryptographichash.cpp mac/macfile.cpp mac/macfile.h dependencies/mountutils/src/darwin/functions.cpp
         mac/macwlancredentials.h mac/macwlancredentials.cpp
@@ -327,9 +328,9 @@ elseif(APPLE)
         message(FATAL_ERROR "Unable to locate macdeployqt")
     endif()
 
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${MACDEPLOYQT}" "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app" -qmldir="${CMAKE_CURRENT_SOURCE_DIR}")
+    #add_custom_command(TARGET ${PROJECT_NAME}
+    #    POST_BUILD
+    #    COMMAND "${MACDEPLOYQT}" "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app" -qmldir="${CMAKE_CURRENT_SOURCE_DIR}")
 
 else()
     find_package(CURL 7.32.0 REQUIRED)
