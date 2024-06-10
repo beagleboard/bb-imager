@@ -32,21 +32,13 @@ build-macos:
     - mkdir build && cd build && cmake ../src
     - make
     - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
-    - macdeployqt bb-imager.app -codesign="${MACOS_KEY_ID}"
+    - macdeployqt bb-imager.app -qmldir="/opt/local/libexec/qt5/qml" -codesign="${MACOS_KEY_ID}" -hardened-runtime -dmg -timestamp
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app/Contents/MacOS/bb-imager
-    - codesign --deep --options runtime --timestamp --force --verify --verbose --sign "${MACOS_KEY_ID}" bb-imager.app
-    - codesign -vvv --deep --strict bb-imager.app
-    - rm -rf bb-imager.dmg.tmp && mkdir -p bb-imager.dmg.tmp
-    - cp -R bb-imager.app bb-imager.dmg.tmp
-    - hdiutil create -volname "BeagleBoard Imager" -srcfolder bb-imager.dmg.tmp -ov -format UDZO bb-imager.dmg
-    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager.dmg
     - codesign -dvv bb-imager.dmg
     - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
-      #- xcrun notarytool store-credentials --apple-id "${MACOS_ID}" --password "{MACOS_NOTARY_PASSWORD}" --team-id "${MACOS_TEAM_ID}" notary-credentials
     - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
     - xcrun stapler staple bb-imager.dmg
-    - spctl -a -v --type install bb-imager.dmg
+    - spctl -a -v --type install bb-imager.app
     - cp -r bb-imager.app bb-imager.dmg ../public
   artifacts:
     paths:
