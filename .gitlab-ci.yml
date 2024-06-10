@@ -33,6 +33,7 @@ build-macos:
     - make
     - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
     - macdeployqt bb-imager.app -qmldir="/opt/local/libexec/qt5/qml" -codesign="${MACOS_KEY_ID}" -hardened-runtime -dmg -timestamp
+    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager.dmg
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
     - codesign -dvv bb-imager.dmg
     - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
