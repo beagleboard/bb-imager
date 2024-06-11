@@ -827,7 +827,7 @@ Window {
             addCloudInit("runcmd:\n"+cloudinitrun+"\n")
         }
 
-        imageWriter.setImageCustomization(config, cmdline, firstrun, cloudinit, cloudinitnetwork)
+        imageWriter.setImageCustomization(config, cmdline, firstrun, cloudinit, cloudinitnetwork, sysconf)
     }
 
     function saveSettings()

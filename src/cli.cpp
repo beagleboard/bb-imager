@@ -195,7 +195,7 @@ int Cli::main()
             return 1;
         }
 
-        _imageWriter->setImageCustomization("", "", "", userData, networkConfig);
+        _imageWriter->setImageCustomization("", "", "", userData, networkConfig, "");
     }
     else if (!parser.value(firstRunScriptOption).isEmpty())
     {
@@ -217,7 +217,7 @@ int Cli::main()
             return 1;
         }
 
-        _imageWriter->setImageCustomization("", "", firstRunScript, "", "");
+        _imageWriter->setImageCustomization("", "", firstRunScript, "", "", "");
     }
 
     _imageWriter->setDst(args[1]);

@@ -1212,7 +1212,7 @@ ApplicationWindow {
             confirmwritepopup.askForConfirmation()
         }
         onNo: {
-            imageWriter.setImageCustomization("", "", "", "", "")
+            imageWriter.setImageCustomization("", "", "", "", "", "")
             confirmwritepopup.askForConfirmation()
         }
         onNoClearSettings: {

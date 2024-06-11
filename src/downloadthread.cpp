@@ -886,7 +886,7 @@ qint64 DownloadThread::_sectorsWritten()
     return -1;
 }
 
-void DownloadThread::setImageCustomization(const QByteArray &config, const QByteArray &cmdline, const QByteArray &firstrun, const QByteArray &cloudinit, const QByteArray &cloudInitNetwork, const QByteArray &initFormat)
+void DownloadThread::setImageCustomization(const QByteArray &config, const QByteArray &cmdline, const QByteArray &firstrun, const QByteArray &cloudinit, const QByteArray &cloudInitNetwork, const QByteArray &initFormat, const QByteArray &sysconf)
 {
     _config = config;
     _cmdline = cmdline;
