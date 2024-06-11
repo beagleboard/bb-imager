@@ -30,6 +30,7 @@ Window {
     property string cloudinitrun
     property string cloudinitwrite
     property string cloudinitnetwork
+    property string sysconf
 
     signal saveSettingsSignal(var settings)
 
@@ -584,6 +585,9 @@ Window {
     function addConfig(s) {
         config += s+"\n"
     }
+    function addSysconf(s) {
+        sysconf += s+"\n"
+    }
     function addFirstRun(s) {
         firstrun += s+"\n"
     }
@@ -613,6 +617,7 @@ Window {
         cloudinitrun = ""
         cloudinitwrite = ""
         cloudinitnetwork = ""
+        sysconf = ""
 
         if (chkHostname.checked && fieldHostname.length) {
             addFirstRun("CURRENT_HOSTNAME=`cat /etc/hostname | tr -d \" \\t\\n\\r\"`")
@@ -634,6 +639,8 @@ Window {
             addCloudInit("      Check-Date \"false\";")
             addCloudInit("    };")
             addCloudInit("")
+
+            addSysconf("hostname="+fieldHostname.text)
         }
 
         if (chkSSH.checked || chkSetUser.checked) {
@@ -645,6 +652,9 @@ Window {
             addCloudInit("- name: "+fieldUserName.text)
             addCloudInit("  groups: users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo")
             addCloudInit("  shell: /bin/bash")
+
+            addSysconf("user_name="+fieldUserName.text)
+            addSysconf("user_password="+fieldUserPassword.text)
 
             var cryptedPassword;
             if (chkSetUser.checked) {
@@ -681,6 +691,8 @@ Window {
                     var pk = pubkeyArr[i].trim();
                     if (pk) {
                         addCloudInit("    - "+pk)
+
+                        addSysconf("user_authorized_key="+pk)
                     }
                 }
                 addCloudInit("  sudo: ALL=(ALL) NOPASSWD:ALL")
@@ -791,6 +803,9 @@ Window {
             addCloudInit("timezone: "+fieldTimezone.editText)
             addCloudInitRun("localectl set-x11-keymap \""+fieldKeyboardLayout.editText+"\" pc105")
             addCloudInitRun("setupcon -k --force || true")
+
+            addSysconf("keymap="+fieldKeyboardLayout.editText)
+            addSysconf("timezone="+fieldTimezone.editText)
         }
 
         if (firstrun.length) {

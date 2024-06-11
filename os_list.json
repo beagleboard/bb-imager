@@ -33,7 +33,7 @@
       "image_download_size": 1468308524,
       "image_download_sha256": "a836d3213c1402ad5da13c3aa7113a5d7ac47fd2bd73ff75b841a32a003f7226",
       "release_date": "2024-06-11",
-      "init_format": "systemd",
+      "init_format": "sysconf",
       "devices": [
         "beagle-am67",
         "recommended"

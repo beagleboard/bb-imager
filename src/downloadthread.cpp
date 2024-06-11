@@ -733,7 +733,7 @@ void DownloadThread::_writeComplete()
 
     emit finalizing();
 
-    if (!_config.isEmpty() || !_cmdline.isEmpty() || !_firstrun.isEmpty() || !_cloudinit.isEmpty())
+    if (!_config.isEmpty() || !_cmdline.isEmpty() || !_firstrun.isEmpty() || !_cloudinit.isEmpty() || !_sysconf.isEmpty())
     {
         if (!_customizeImage())
         {
@@ -894,6 +894,7 @@ void DownloadThread::setImageCustomization(const QByteArray &config, const QByte
     _cloudinit = cloudinit;
     _cloudinitNetwork = cloudInitNetwork;
     _initFormat = initFormat;
+    _sysconf = sysconf;
 }
 
 bool DownloadThread::_customizeImage()
@@ -941,13 +942,42 @@ bool DownloadThread::_customizeImage()
             fat->writeFile("config.txt", config);
         }
 
+        if (!_sysconf.isEmpty()) {
+            auto configItems = _sysconf.split('\n');
+            configItems.removeAll("");
+            QByteArray config = fat->readFile("sysconf.txt");
+
+            for (const QByteArray& item : qAsConst(configItems))
+            {
+                if (config.contains("#"+item)) {
+                    /* Uncomment existing line */
+                    config.replace("#"+item, item);
+                } else if (config.contains("\n"+item)) {
+                    /* sysconf.txt already contains the line */
+                } else {
+                    /* Append new line to sysconf.txt */
+                    if (config.right(1) != "\n")
+                        config += "\n"+item+"\n";
+                    else
+                        config += item+"\n";
+                }
+            }
+
+            fat->writeFile("sysconf.txt", config);
+        }
+
         if (_initFormat == "auto")
         {
             /* Do an attempt at auto-detecting what customization format a custom
                image provided by the user supports */
             QByteArray issue = fat->readFile("issue.txt");
 
-            if (fat->fileExists("user-data"))
+            if (fat->fileExists("sysconf.txt"))
+            {
+                _initFormat = "sysconf";
+                qDebug() << "sysconf.txt found on FAT partition. Assuming bbbio-set-sysconf support";
+            }
+            else if (fat->fileExists("user-data"))
             {
                 /* If we have user-data file on FAT partition, then it must be cloudinit */
                 _initFormat = "cloudinit";
