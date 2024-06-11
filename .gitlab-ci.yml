@@ -49,7 +49,7 @@ build-macos:
 
 build-windows:
   stage: build
-  tags: ["windows"]
+  tags: ["docker-amd64"]
   script:
     - env
   artifacts:
