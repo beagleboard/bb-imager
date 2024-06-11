@@ -654,7 +654,7 @@ Window {
             addCloudInit("  shell: /bin/bash")
 
             addSysconf("user_name="+fieldUserName.text)
-            addSysconf("user_password="+fieldUserPassword.text)
+            addSysconf("user_encypted_password="+fieldUserPassword.text)
 
             var cryptedPassword;
             if (chkSetUser.checked) {
