@@ -33,25 +33,28 @@ build-macos:
     - make
     - security unlock-keychain -p "${MACOS_PASSWORD}" ${HOME}/Library/Keychains/login.keychain
     - macdeployqt bb-imager.app -qmldir="/opt/local/libexec/qt5/qml" -codesign="${MACOS_KEY_ID}" -hardened-runtime -dmg -timestamp
-    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager.dmg
+    - export VER="$(/usr/libexec/PlistBuddy -c 'print ":CFBundleShortVersionString"' bb-imager.app/Contents/Info.plist)"
+    - mv bb-imager.dmg bb-imager-$VER.dmg
+    - codesign --timestamp --sign "${MACOS_KEY_ID}" bb-imager-$VER.dmg
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
-    - codesign -dvv bb-imager.dmg
-    - ditto -c -k --sequesterRsrc --keepParent bb-imager.dmg bb-imager.zip
+    - codesign -dvv bb-imager-$VER.dmg
+    - ditto -c -k --sequesterRsrc --keepParent bb-imager-$VER.dmg bb-imager.zip
     - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
-    - xcrun stapler staple bb-imager.dmg
+    - xcrun stapler staple bb-imager-$VER.dmg
     - spctl -a -v --type install bb-imager.app
-    - cp -r bb-imager.app bb-imager.dmg ../public
+    - cp -r bb-imager-$VER.dmg ../public
   artifacts:
     paths:
       - public
 
-#build-windows:
-  #stage: build
-  #tags: ["windows"]
-  #script:
-  #artifacts:
-    #paths:
-      #- public
+build-windows:
+  stage: build
+  tags: ["windows"]
+  script:
+    - env
+  artifacts:
+    paths:
+      - public
 
 pages:
   image: registry.git.beagleboard.org/jkridner/debian-build
@@ -64,7 +67,7 @@ pages:
     #- "build: [debian-build, docker-armhf]"
     #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
-    #- "build-windows"
+    - "build-windows"
   script:
     - git rev-parse HEAD > public/git-tag.txt
     - git show -s --format=%ci HEAD > public/git-date.txt
