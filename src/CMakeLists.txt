@@ -321,6 +321,13 @@ elseif(APPLE)
     set(EXTRALIBS ${EXTRALIBS} ${CoreFoundation} ${DiskArbitration} ${Security} ${Cocoa} ${IOKit})
     set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE YES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/mac/Info.plist.in)
 
+    set(SEARCH_CA_BUNDLE_PATHS
+        /etc/ssl/certs/ca-certificates.crt
+        /etc/pki/tls/certs/ca-bundle.crt
+        /usr/share/ssl/certs/ca-bundle.crt
+        /usr/local/share/certs/ca-root-nss.crt
+        /etc/ssl/cert.pem)
+
     #find_program(MACDEPLOYQT "macdeployqt" PATHS
     #    "${${QT}_DIR}/../../../bin"
     #    "/opt/local/libexec/qt5/bin")
