@@ -327,6 +327,7 @@ elseif(APPLE)
         /usr/share/ssl/certs/ca-bundle.crt
         /usr/local/share/certs/ca-root-nss.crt
         /etc/ssl/cert.pem)
+    set(CURL_CA_BUNDLE_AUTODETECT true)
 
     #find_program(MACDEPLOYQT "macdeployqt" PATHS
     #    "${${QT}_DIR}/../../../bin"
