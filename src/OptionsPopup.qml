@@ -765,7 +765,6 @@ Window {
             addFirstRun("   done")
             addFirstRun("fi")
 
-
             cloudinitnetwork  = "version: 2\n"
             cloudinitnetwork += "wifis:\n"
             cloudinitnetwork += "  renderer: networkd\n"
@@ -780,6 +779,13 @@ Window {
             }
 
             addCmdline("cfg80211.ieee80211_regdom="+fieldWifiCountry.editText)
+
+            var iwdpsk = "[Security]\nPassphrase"+fieldWifiPassword.text)+"\n"
+            iwdpsk += "\n[Settings]\nAutoconnect=true\n"
+
+            addSysconf("iwd_psk_file="+fieldWifiSSID.text+".psk")
+            addSysconf("iwd_psk_file_contents="+Qt.btoa(iwdpsk))
+            addSysconf("wifi_regdom="+fieldWifiCountry.text)
         }
         if (chkLocale.checked) {
             var kbdconfig = "XKBMODEL=\"pc105\"\n"
