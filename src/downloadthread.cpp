@@ -999,7 +999,7 @@ bool DownloadThread::_customizeImage()
             }
         }
 
-        if (!_firstrun.isEmpty() && _initFormat == "systemd")
+        if (!_firstrun.isEmpty() && (_initFormat == "systemd" || _initFormat == "sysconf"))
         {
             fat->writeFile("firstrun.sh", _firstrun);
             _cmdline += " systemd.run=/boot/firstrun.sh systemd.run_success_action=reboot systemd.unit=kernel-command-line.target";
