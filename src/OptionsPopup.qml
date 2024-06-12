@@ -504,7 +504,7 @@ Window {
             }
             chkWifi.checked = true
         } else {
-            fieldWifiCountry.currentIndex = fieldWifiCountry.find("GB")
+            fieldWifiCountry.currentIndex = fieldWifiCountry.find("US")
             fieldWifiSSID.text = imageWriter.getSSID()
             if (fieldWifiSSID.text.length) {
                 fieldWifiPassword.text = imageWriter.getPSK()
