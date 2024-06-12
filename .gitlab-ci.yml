@@ -1,3 +1,23 @@
+build-fedora:
+  stage: build
+  parallel:
+    matrix:
+      - IMAGE: fedora-build
+        TAG: [docker-amd64, docker-aarch64-ci]
+  image: registry.git.beagleboard.org/jkridner/${IMAGE}
+  tags:
+    - ${TAG}
+  before_script:
+    - sudo dnf install -y git gcc gcc-c++ make cmake libarchive-devel libcurl-devel lzma-sdk-devel openssl-devel qt5-qtbase-devel qt5-qtquickcontrols2-devel qt5-qtsvg-devel qt5-linguist xz-devel
+  script:
+    - mkdir -p build && cd build && cmake ../src
+    - make
+    - mkdir -p ../public
+    - cp bb-imager ../public/bb-imager-fedora-${TAG}
+  artifacts:
+    paths:
+      - public
+
 build-debian:
   stage: build
   parallel:
@@ -53,6 +73,7 @@ build-windows:
   tags: ["docker-amd64"]
   script:
     - env
+    - i686-w64-mingw32.static-cmake --version
   artifacts:
     paths:
       - public
@@ -65,6 +86,8 @@ pages:
   dependencies:
     - "build-debian: [debian-build, docker-amd64]"
     - "build-debian: [debian-build, docker-aarch64-ci]"
+    - "build-fedora: [fedora-build, docker-amd64]"
+    - "build-fedora: [fedora-build, docker-aarch64-ci]"
     #- "build: [debian-build, docker-armhf]"
     #- "build: [debian-build, docker-riscv64-ci]"
     - "build-macos"
