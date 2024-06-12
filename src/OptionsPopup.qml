@@ -785,7 +785,7 @@ Window {
 
             addSysconf("iwd_psk_file="+fieldWifiSSID.text+".psk")
             addSysconf("iwd_psk_file_contents="+Qt.btoa(iwdpsk))
-            addSysconf("wifi_regdom="+fieldWifiCountry.text)
+            addSysconf("wifi_regdom="+fieldWifiCountry.editText)
         }
         if (chkLocale.checked) {
             var kbdconfig = "XKBMODEL=\"pc105\"\n"
