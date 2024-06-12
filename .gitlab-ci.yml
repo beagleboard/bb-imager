@@ -73,7 +73,7 @@ build-windows:
   tags: ["docker-amd64"]
   script:
     - env
-    - i686-w64-mingw32.static-cmake --version
+    #- i686-w64-mingw32.static-cmake --version
   artifacts:
     paths:
       - public
