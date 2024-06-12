@@ -780,7 +780,7 @@ Window {
 
             addCmdline("cfg80211.ieee80211_regdom="+fieldWifiCountry.editText)
 
-            var iwdpsk = "[Security]\nPassphrase"+fieldWifiPassword.text+"\n"
+            var iwdpsk = "[Security]\nPassphrase="+fieldWifiPassword.text+"\n"
             iwdpsk += "\n[Settings]\nAutoconnect=true\n"
 
             addSysconf("iwd_psk_file="+fieldWifiSSID.text+".psk")

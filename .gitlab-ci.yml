@@ -48,6 +48,7 @@ build-macos:
       - public
 
 build-windows:
+  image: registry.git.beagleboard.org/jkridner/mxe:latest
   stage: build
   tags: ["docker-amd64"]
   script:
