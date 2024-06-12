@@ -780,11 +780,6 @@ Window {
 
             addCmdline("cfg80211.ieee80211_regdom="+fieldWifiCountry.editText)
 
-            var iwdpsk = "[Security]\nPreSharedKey="+fieldWifiPassword.text+"\n"
-            iwdpsk += "\n[Settings]\nAutoconnect=true\n"
-
-            addSysconf("iwd_psk_file="+fieldWifiSSID.text+".psk")
-            addSysconf("iwd_psk_file_contents="+Qt.btoa(iwdpsk))
             addSysconf("wifi_regdom="+fieldWifiCountry.editText)
         }
         if (chkLocale.checked) {
