@@ -34,6 +34,11 @@
 #ifdef Q_OS_DARWIN
 #include <CoreFoundation/CoreFoundation.h>
 #endif
+#ifdef Q_OS_WIN
+#include "windows.h"
+#include <cstdio>
+#include <iostream>
+#endif
 
 static QTextStream cerr(stderr);
 
