@@ -73,7 +73,11 @@ build-windows:
   tags: ["docker-amd64"]
   script:
     - env
-    #- i686-w64-mingw32.static-cmake --version
+    - i686-w64-mingw32.static-cmake --version
+    - mkdir -p build && cd build && i686-w64-mingw32.static-cmake ../src
+    - make
+    - mkdir -p ../public/windows
+    - cp bb-imager.exe dependencies/*/*.exe ../public/windows
   artifacts:
     paths:
       - public
