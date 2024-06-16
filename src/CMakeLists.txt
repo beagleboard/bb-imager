@@ -186,7 +186,7 @@ if (WIN32)
     # External libgcrypt
     find_package(PkgConfig REQUIRED)
     pkg_search_module(GCRYPT REQUIRED libgcrypt)
-    set(EXTRALIBS ${EXTRALIBS} gcrypt)
+    set(EXTRALIBS ${EXTRALIBS} ${GCRYPT_STATIC_LIBRARIES})
 
     # Bundled zlib
     add_subdirectory(dependencies/zlib-1.2.13)
