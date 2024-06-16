@@ -16,7 +16,7 @@
           "beagle-am67"
         ],
         "default": false,
-        "icon": "https://www.beagleboard.org/app/uploads/2024/03/BeagleY-AI-angled-front-1-400x267.webp",
+        "icon": "https://www.beagleboard.org/app/uploads/2024/06/BeagleY-AI-angled-front-1-400x267-1.png",
         "description": "BeagleY-AI based on TI AM67A",
         "matching_type": "inclusive"
       }
@@ -27,12 +27,12 @@
       "name": "BeagleY-AI Debian XFCE (Recommended)",
       "description": "Debian graphical user interface (XFCE) image for BeagleY-AI based on TI AM67A (J722S) processor",
       "icon": "https://www.beagleboard.org/app/uploads/2022/10/debian.png",
-      "url": "https://files.beagle.cc/file/beagleboard-public-2021/images/beagley-ai-debian-12.5-xfce-arm64-2024-06-11-12gb.img.xz",
+      "url": "https://files.beagle.cc/file/beagleboard-public-2021/images/beagley-ai-debian-12.5-xfce-arm64-2024-06-12-12gb.img.xz",
       "extract_size": 12884901888,
-      "extract_sha256": "34bdefa7f31c676de5288c303ec32f8bfe79c6a684fe426cb9058a280233b7c6",
-      "image_download_size": 1468308524,
-      "image_download_sha256": "a836d3213c1402ad5da13c3aa7113a5d7ac47fd2bd73ff75b841a32a003f7226",
-      "release_date": "2024-06-11",
+      "extract_sha256": "4deed02789cb15fcabd4dd0de4da8c6b70f502d21f4a459c1995adcc91616067",
+      "image_download_size": 1467215260,
+      "image_download_sha256": "ab15f7c2f0301a1f94f8e70ce46512886b1bb100a46127c95396f855490bd579",
+      "release_date": "2024-06-12",
       "init_format": "sysconf",
       "devices": [
         "beagle-am67",
