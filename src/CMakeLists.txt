@@ -182,6 +182,7 @@ if (WIN32)
     add_definitions(-DWINVER=0x0601 -D_WIN32_WINNT=0x0601)
 
     find_package(OpenSSL REQUIRED)
+    ADD_LIBRARY(libgcrypt STATIC IMPORTED)
 
     # Bundled zlib
     add_subdirectory(dependencies/zlib-1.2.13)
@@ -230,59 +231,59 @@ if (WIN32)
         COMMAND ${CMAKE_STRIP} "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
 
     # Code signing
-    find_program(SIGNTOOL "signtool.exe" PATHS
-        "c:/Program Files (x86)/Microsoft SDKs/ClickOnce/SignTool"
-        "c:/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64")
-    if (NOT SIGNTOOL)
-        message(FATAL_ERROR "Unable to locate signtool.exe used for code signing")
-    endif()
-    add_definitions(-DSIGNTOOL="${SIGNTOOL}")
-
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
-
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe")
-
-    # Windeploy
-    find_program(WINDEPLOYQT "windeployqt.exe" PATHS "${${QT}_DIR}/../../../bin")
-    if (NOT WINDEPLOYQT)
-        message(FATAL_ERROR "Unable to locate windeployqt.exe")
-    endif()
-
-    file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/deploy")
-
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-            "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe" "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe"
-            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/bb-imager-cli.cmd"
-            "${CMAKE_BINARY_DIR}/deploy")
-
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-            "${${QT}_DIR}/../../../bin/libssl-1_1.dll" "${${QT}_DIR}/../../../bin/libcrypto-1_1.dll"
-            "${CMAKE_BINARY_DIR}/deploy")
-
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/windows/bb-imager.nsi.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.nsi"
-        @ONLY)
-
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/bb-imager.exe")
-
-    # Remove excess files
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E remove
-            "${CMAKE_BINARY_DIR}/deploy/imageformats/qtiff.dll"
-            "${CMAKE_BINARY_DIR}/deploy/imageformats/qwebp.dll"
-            "${CMAKE_BINARY_DIR}/deploy/imageformats/qgif.dll")
+#    find_program(SIGNTOOL "signtool.exe" PATHS
+#        "c:/Program Files (x86)/Microsoft SDKs/ClickOnce/SignTool"
+#        "c:/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64")
+#    if (NOT SIGNTOOL)
+#        message(FATAL_ERROR "Unable to locate signtool.exe used for code signing")
+#    endif()
+#    add_definitions(-DSIGNTOOL="${SIGNTOOL}")
+#
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
+#
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe")
+#
+#    # Windeploy
+#    find_program(WINDEPLOYQT "windeployqt.exe" PATHS "${${QT}_DIR}/../../../bin")
+#    if (NOT WINDEPLOYQT)
+#        message(FATAL_ERROR "Unable to locate windeployqt.exe")
+#    endif()
+#
+#    file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/deploy")
+#
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E copy
+#            "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe" "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe"
+#            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/bb-imager-cli.cmd"
+#            "${CMAKE_BINARY_DIR}/deploy")
+#
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E copy
+#            "${${QT}_DIR}/../../../bin/libssl-1_1.dll" "${${QT}_DIR}/../../../bin/libcrypto-1_1.dll"
+#            "${CMAKE_BINARY_DIR}/deploy")
+#
+#    configure_file(
+#        "${CMAKE_CURRENT_SOURCE_DIR}/windows/bb-imager.nsi.in"
+#        "${CMAKE_CURRENT_BINARY_DIR}/bb-imager.nsi"
+#        @ONLY)
+#
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/bb-imager.exe")
+#
+#    # Remove excess files
+#    add_custom_command(TARGET ${PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E remove
+#            "${CMAKE_BINARY_DIR}/deploy/imageformats/qtiff.dll"
+#            "${CMAKE_BINARY_DIR}/deploy/imageformats/qwebp.dll"
+#            "${CMAKE_BINARY_DIR}/deploy/imageformats/qgif.dll")
 
 elseif(APPLE)
     find_package(ZLIB REQUIRED)
