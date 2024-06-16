@@ -182,7 +182,7 @@ if (WIN32)
     add_definitions(-DWINVER=0x0601 -D_WIN32_WINNT=0x0601)
 
     find_package(OpenSSL REQUIRED)
-    ADD_LIBRARY(libgcrypt STATIC IMPORTED)
+    set(EXTRALIBS ${EXTRALIBS} -lgcrypt)
 
     # Bundled zlib
     add_subdirectory(dependencies/zlib-1.2.13)
