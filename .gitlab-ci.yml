@@ -75,6 +75,8 @@ build-windows:
     - env
     - i686-w64-mingw32.static-cmake --version
     - mkdir -p build && cd build && i686-w64-mingw32.static-cmake ../src
+    - make && true
+    - i686-w64-mingw32.static-cmake ../src
     - make
     - mkdir -p ../public/windows
     - cp bb-imager.exe dependencies/*/*.exe ../public/windows
