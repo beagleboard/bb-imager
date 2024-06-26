@@ -59,7 +59,7 @@ build-macos:
     - otool -L bb-imager.app/Contents/MacOS/bb-imager
     - codesign -dvv bb-imager-$VER.dmg
     - ditto -c -k --sequesterRsrc --keepParent bb-imager-$VER.dmg bb-imager.zip
-    - xcrun notarytool store-credentials --apple-id "${MACOS_ID}" --password "{MACOS_NOTARY_PASSWORD}" --team-id "${MACOS_TEAM_ID}" notary-credentials
+    - xcrun notarytool store-credentials --apple-id "${MACOS_ID}" --password "${MACOS_NOTARY_PASSWORD}" --team-id "${MACOS_TEAM_ID}" notary-credentials
     - xcrun notarytool submit bb-imager.zip --keychain-profile "notary-credentials" --wait
     - xcrun stapler staple bb-imager-$VER.dmg
     - spctl -a -v --type install bb-imager.app
